@@ -1,0 +1,31 @@
+Instalasi Server Local (Offline)
+- Download dan instal XAMPP v3.3.0 atau dengan minimal PHP 8.2
+- Jalankan XAMPP untuk Apache dan MySQL
+
+Instalasi
+- Pindahkan folder SPK-ROC-VIKOR-LARAVEL-10 ke folder htdocs pada XAMPP (misal C:\xampp\htdocs) atau bisa di directory lain (misal D:\)
+
+Buat Database
+- Buka browser dan ketikkan "localhost/phpmyadmin" di bilah alamat
+- Halaman phpMyAdmin akan terbuka. Buatlah database baru dengan nama spk_roc_vikor_laravel_10
+- Pilih tab "Import" di bagian atas halaman
+- Klik tombol "Choose File" atau "Pilih File" dan impor file yang ada di dalam folder "Database".
+
+Jalankan Program Aplikasi
+- Buka Command Prompt (CMD) di komputer Anda.
+- Ketikkan perintah "composer install" tekan Enter dan tunggu hingga selesai.
+- Kemudian ketikkan perintah "php artisan serve" dan tekan Enter.
+- Anda akan diberikan URL yang dapat digunakan untuk mengakses aplikasi. Misalnya, "127.0.0.1:8000".
+- Buka browser dan ketikkan URL yang diberikan pada langkah sebelumnya (misalnya, "127.0.0.1:8000").
+- Aplikasi SPK-ROC-VIKOR-LARAVEL-10 akan terbuka.
+
+Akses Login
+Admin
+Username = admin
+Password = admin
+
+User
+Username = user
+Password = user
+
+====Tested on XAMPP v3.3.0 or PHP Versi: 8.2====
