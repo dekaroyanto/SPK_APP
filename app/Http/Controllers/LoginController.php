@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlternatifModel;
+use App\Models\KriteriaModel;
 use Illuminate\Http\Request;
 use App\Models\LoginModel;
 use Illuminate\Support\Facades\Session;
@@ -14,31 +16,33 @@ class LoginController extends Controller
     }
 
     public function proses_login(Request $request)
-    {
-        $username = $request->input('username');
-        $password = $request->input('password');
-        $passwordx = md5($password);
+{
+    $username = $request->input('username');
+    $password = $request->input('password');
+    $passwordx = md5($password);
 
-        $loginModel = new LoginModel();
-        $set = $loginModel->login($username, $passwordx);
+    $loginModel = new LoginModel();
+    $set = $loginModel->login($username, $passwordx);
 
-        if ($set) {
-            $log = [
-                'id_user' => $set->id_user,
-                'username' => $set->username,
-                'nama' => $set->nama,
-                'id_user_level' => $set->id_user_level,
-                'status' => 'Logged'
-            ];
+    if ($set) {
+        $log = [
+            'id_user' => $set->id_user,
+            'username' => $set->username,
+            'nama' => $set->nama,
+            'id_user_level' => $set->id_user_level,
+            'status' => 'Logged'
+        ];
 
-            session()->put('log', $log);
+        session()->put('log', $log);
 
-            return redirect()->route('dashboard');
-        } else {
-            $request->session()->flash('message', 'Username atau Password Salah');
-            return redirect()->route('login');
-        }
+        return redirect()->route('dashboard');
+    } else {
+        return back()->withErrors([
+            'loginError' => 'Username atau password salah'
+        ]);
     }
+}
+
 
 
     public function Logout(Request $request) // Renamed the method to lowercase "logout"
@@ -51,7 +55,9 @@ class LoginController extends Controller
     {
         if (session('log.status') == 'Logged') {
             $data['page'] = "Dashboard";
-            return view('dashboard', $data);
+            $countKriteria = KriteriaModel::count();
+            $countAlternatif = AlternatifModel::count();
+            return view('dashboard', ['data' => $data, 'countKriteria' => $countKriteria, 'countAlternatif' => $countAlternatif]);
         } else {
             return redirect()->route('login');
         }
