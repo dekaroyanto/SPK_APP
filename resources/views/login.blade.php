@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="heading">
-                            <h2>Welcome Back</h2>
+                            <h3>Selamat Datang</h3>
                         </div>
                         {{-- @error('loginError')
                             <div class="alert alert-danger">
@@ -37,7 +37,7 @@
                             <script>
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Gagal Login',
+                                    title: 'Gagal Masuk',
                                     text: '{{ $errors->first() }}'
                                 });
                             </script>
@@ -55,7 +55,7 @@
                                 <label>Password</label>
                             </div>
 
-                            <input type="submit" value="Login" class="sign-btn" />
+                            <input type="submit" value="Masuk" class="sign-btn" />
                         </div>
                     </form>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="text-slider">
                         <div class="text-wrap">
                             <div class="text-group">
-                                <h2>Login untuk melanjutkan</h2>
+                                <h2>Masuk untuk melanjutkan</h2>
 
                             </div>
                         </div>

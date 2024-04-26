@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/table-datatable.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/choices.js/public/assets/styles/choices.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/flatpickr/flatpickr.min.css') }}">
+    <link
+            rel="stylesheet"
+            href="{{ asset('mazer/extensions/sweetalert2/sweetalert2.min.css') }}"
+        />
 
 </head>
 
@@ -91,47 +95,32 @@
                             </a>
                         </li>
 
-                        <li
-                            class="sidebar-item has-sub {{ request()->is('karyawans*', 'createkaryawan*') ? 'active' : '' }}">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Karyawan</span>
+                        <li class="sidebar-item {{ request()->is('SubKriteria*') ? 'active' : '' }}">
+                            <a href="/SubKriteria" class='sidebar-link'>
+                                <i class="bi bi-boxes"></i>
+                                <span>Sub Kriteria</span>
                             </a>
-
-                            <ul class="submenu ">
-                                <li
-                                    class="submenu-item sidebar-item {{ request()->routeIs('karyawans.index') ? 'active' : '' }}">
-                                    <a href="" class="submenu-link">Daftar Karyawan</a>
-                                </li>
-
-                                <li
-                                    class="submenu-item sidebar-item {{ request()->routeIs('karyawans.create') ? 'active' : '' }}">
-                                    <a href="" class="submenu-link">Tambah Karyawan</a>
-                                </li>
-                            </ul>
-
-
                         </li>
 
-                        <li class="sidebar-item has-sub {{ request()->is('gajis*', 'creategajis*') ? 'active' : '' }}">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-cash-coin"></i>
-                                <span>Gaji</span>
+                        <li class="sidebar-item {{ request()->is('Alternatif*') ? 'active' : '' }}">
+                            <a href="/Alternatif" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Alternatif</span>
                             </a>
+                        </li>
 
-                            <ul class="submenu ">
-                                <li
-                                    class="submenu-item sidebar-item {{ request()->routeIs('gajis.index') ? 'active' : '' }}">
-                                    <a href="" class="submenu-link">Daftar Gaji</a>
-                                </li>
+                        <li class="sidebar-item {{ request()->is('Penilaian*') ? 'active' : '' }}">
+                            <a href="/Penilaian" class='sidebar-link'>
+                                <i class="bi bi-pencil-square"></i>
+                                <span>Penilaian</span>
+                            </a>
+                        </li>
 
-                                <li
-                                    class="submenu-item sidebar-item {{ request()->routeIs('gajis.create') ? 'active' : '' }}">
-                                    <a href="" class="submenu-link">Tambah Gaji</a>
-                                </li>
-                            </ul>
-
-
+                        <li class="sidebar-item {{ request()->is('Perhitungan*') ? 'active' : '' }}">
+                            <a href="/Perhitungan" class='sidebar-link'>
+                                <i class="bi bi-calculator"></i>
+                                <span>Perhitungan</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -176,12 +165,10 @@
                                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="user-menu d-flex">
                                         <div class="user-name text-end me-3">
-                                            @if (Auth::check())
-                                                <h6 class="mb-0 text-gray-600">
-                                                    Hi, {{ Auth::user()->name }}!
+
+                                                <h6 class="mt-2 text-gray-600">
+                                                    Hi,  {{ session('log.nama') }}!
                                                 </h6>
-                                            @endif
-                                            <p class="mb-0 text-sm text-gray-600">Administrator</p>
                                         </div>
                                         <div class="user-img d-flex align-items-center">
                                             <div class="avatar avatar-md">
@@ -192,17 +179,17 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                                     style="min-width: 11rem;">
-                                    <li>
+                                    {{-- <li>
                                         @if (Auth::check())
                                             <h6 class="mb-0 ms-2 text-gray-600">
                                                 Hi, {{ Auth::user()->name }}!
                                             </h6>
                                         @endif
-                                    </li>
+                                    </li> --}}
                                     <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bi bi-people"></i>
-                                            Daftar Akun
+                                        <a class="dropdown-item" href="{{ url('Profile') }}">
+                                            <i class="bi bi-person-gear"></i>
+                                            Profile
                                         </a>
                                     </li>
                                     <li>
@@ -214,7 +201,7 @@
 
                                     <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" id="logout" href="{{ route('logout') }}"><i
+                                    <li><a class="dropdown-item" id="logout" href="{{ url('Logout') }}"><i
                                                 class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -296,6 +283,25 @@
         });
     </script>
 
+<script>
+    function confirmDelete(url) {
+        Swal.fire({
+            title: 'Apakah anda yakin?',
+            text: "Anda tidak akan dapat mengembalikan data ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
     @yield('jscript')
 
     <script>
@@ -303,12 +309,12 @@
         document.getElementById('logout').addEventListener('click', function(e) {
             e.preventDefault();
             Swal.fire({
-                title: 'Apakah Anda yakin ingin logout?',
+                title: 'Apakah Anda yakin ingin keluar?',
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, logout!',
+                confirmButtonText: 'Ya, keluar!',
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {

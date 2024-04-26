@@ -12,14 +12,9 @@ class PenilaianController extends Controller
     public function index()
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "Penilaian";

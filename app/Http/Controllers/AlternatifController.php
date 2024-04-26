@@ -12,12 +12,7 @@ class AlternatifController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-?>
-            <script>
-                window.location = '<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-        <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "Alternatif";
@@ -30,12 +25,7 @@ class AlternatifController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-        ?>
-            <script>
-                window.location = '<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-        <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "Alternatif";
@@ -47,7 +37,7 @@ class AlternatifController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            return redirect('Dashboard')->with('error', 'Anda tidak berhak mengakses halaman ini!');
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $this->validate($request, [
@@ -72,12 +62,9 @@ class AlternatifController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-        ?>
-            <script>
-                window.location = '<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-        <?php
+            if ($id_user_level != 1) {
+                return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+            }
         }
 
         $data['page'] = "Alternatif";
@@ -90,12 +77,7 @@ class AlternatifController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-        ?>
-            <script>
-                window.location = '<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-        <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $this->validate($request, [
@@ -109,8 +91,7 @@ class AlternatifController extends Controller
         $alternatif = AlternatifModel::findOrFail($id_alternatif);
         $alternatif->update($data);
 
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-        return redirect('Alternatif');
+        return redirect()->route('Alternatif')->with('success', 'Data berhasil diupdate!');
     }
 
     public function destroy(Request $request, $id_alternatif)
@@ -118,16 +99,11 @@ class AlternatifController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-        ?>
-            <script>
-                window.location = '<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-<?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         AlternatifModel::findOrFail($id_alternatif)->delete();
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
-        return redirect('Alternatif');
+
+        return redirect()->route('Alternatif')->with('success', 'Data berhasil dihapus!');
     }
 }

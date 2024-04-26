@@ -46,8 +46,7 @@
                                     <div class="btn-group" role="group">
                                         <a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="{{ url('Kriteria/edit/'.$data->id_kriteria) }}" class="btn btn-warning btn-sm"><i
                                             class="bi bi-pencil-square"></i></a>
-                                        <a data-toggle="tooltip" data-placement="bottom" title="Hapus Data" href="{{ url('Kriteria/destroy/'.$data->id_kriteria) }}" onclick="return confirm('Apakah anda yakin untuk menghapus data ini')" class="btn btn-danger btn-sm"><i
-                                            class="bi bi-trash-fill"></i></a>
+                                            <button data-toggle="tooltip" data-placement="bottom" title="Hapus Data" onclick="confirmDelete('{{ url('Kriteria/destroy/'.$data->id_kriteria) }}')" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i></button>
                                     </div>
                                 </td>
                             </tr>

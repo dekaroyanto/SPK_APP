@@ -34,9 +34,13 @@
                 </div>
 
                 <div class="form-group col-md-4">
-					<label class="font-weight-bold">Tingkat Prioritas</label>
-					<input autocomplete="off" type="number" name="prioritas" required class="form-control"/>
-				</div>
+                    <label class="font-weight-bold">Tingkat Prioritas</label>
+                    <?php
+                        // Mengambil jumlah data + 1
+                        $count = App\Models\KriteriaModel::count() + 1;
+                    ?>
+                    <input readonly autocomplete="off" type="number" name="prioritas" value="{{ $count }}" required class="form-control"/>
+                </div>
             </div>
         </div>
         <div class="card-footer col-sm-12 d-flex justify-content-end">

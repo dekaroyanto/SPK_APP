@@ -10,7 +10,7 @@ class UserController extends Controller
     public function index()
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
             ?>
             <script>
@@ -28,7 +28,7 @@ class UserController extends Controller
     public function tambah()
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
             ?>
             <script>
@@ -46,7 +46,7 @@ class UserController extends Controller
     public function simpan(Request $request)
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
             ?>
             <script>
@@ -86,14 +86,9 @@ class UserController extends Controller
     public function edit($id_user)
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "User";
@@ -105,14 +100,9 @@ class UserController extends Controller
     public function detail($id_user)
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "User";
@@ -124,14 +114,9 @@ class UserController extends Controller
     public function update(Request $request, $id_user)
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $this->validate($request, [
@@ -160,16 +145,11 @@ class UserController extends Controller
     public function destroy(Request $request, $id_user)
     {
         $id_user_level = session('log.id_user_level');
-        
+
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
-        
+
         UserModel::findOrFail($id_user)->delete();
         $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
         return redirect('User');

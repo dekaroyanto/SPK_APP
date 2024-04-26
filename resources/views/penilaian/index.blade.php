@@ -1,4 +1,6 @@
-@include('layouts.header_admin')
+@extends('layouts.default_template')
+
+@section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-edit"></i> Data Penilaian</h1>
@@ -8,13 +10,13 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-warning"><i class="fa fa-table"></i> Daftar Data Penilaian</h6>
+        <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Daftar Data Penilaian</h6>
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead class="bg-warning text-white">
+            <table class="table table-striped text-sm" id="table1">
+                <thead class="text-center">
                     <tr align="center">
                         <th width="5%">No</th>
                         <th>Alternatif</th>
@@ -31,9 +33,9 @@
 
                         <td>
                             @if ($cek_tombol == 0)
-                            <a data-toggle="modal" href="#set{{ $keys->id_alternatif }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Input</a>
+                            <a data-bs-toggle="modal" href="#set{{ $keys->id_alternatif }}" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Input</a>
                             @else
-                            <a data-toggle="modal" href="#edit{{ $keys->id_alternatif }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                            <a data-bs-toggle="modal" href="#edit{{ $keys->id_alternatif }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
                             @endif
                         </td>
                     </tr>
@@ -43,8 +45,8 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="myModalLabel"><i class="fa fa-plus"></i> Input Penilaian</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Input Penilaian</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form action="{{ url('Penilaian/tambah') }}" method="post">
                                     {{ csrf_field() }}
@@ -69,8 +71,8 @@
                                         @endforeach
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Simpan</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                                     </div>
                                 </form>
                             </div>
@@ -82,8 +84,8 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i> Edit Penilaian</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Input Penilaian</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form action="{{ url('Penilaian/edit') }}" method="post">
                                     {{ csrf_field() }}
@@ -111,14 +113,14 @@
                                         @endforeach
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-warning" data-dismiss="modal"><i class="fa fa-times"></i> Batal</button>
-                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <?php 
+                    <?php
                         $no++;
                     ?>
 				    @endforeach
@@ -127,6 +129,6 @@
 	</div>
 </div>
 
-@include('layouts.footer_admin')
+@endsection
 
 

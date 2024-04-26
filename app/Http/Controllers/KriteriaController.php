@@ -8,22 +8,17 @@ use App\Models\KriteriaModel;
 class KriteriaController extends Controller
 {
     public function index()
-    {
-        $id_user_level = session('log.id_user_level');
+{
+    $id_user_level = session('log.id_user_level');
 
-        if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
-        }
-
-        $data['page'] = "Kriteria";
-        $data['list'] = KriteriaModel::all();
-        return view('kriteria.index', $data);
+    if ($id_user_level != 1) {
+        return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
     }
+
+    $data['page'] = "Kriteria";
+    $data['list'] = KriteriaModel::all();
+    return view('kriteria.index', $data);
+}
 
     public function generate(Request $request)
     {
@@ -46,8 +41,7 @@ class KriteriaController extends Controller
             $krt = KriteriaModel::findOrFail($id_kriteria);
             $krt->update($data);
         }
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data nilai bobot berhasil digenerate!</div>');
-        return redirect()->route('Kriteria');
+        return redirect('Kriteria')->with('success', 'Bobot berhasil digenerate!');
     }
 
     public function tambah()
@@ -55,12 +49,7 @@ class KriteriaController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "Kriteria";
@@ -72,12 +61,7 @@ class KriteriaController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $this->validate($request, [
@@ -106,12 +90,7 @@ class KriteriaController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "Kriteria";
@@ -124,12 +103,7 @@ class KriteriaController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $this->validate($request, [
@@ -156,16 +130,11 @@ class KriteriaController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         KriteriaModel::findOrFail($id_kriteria)->delete();
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
-        return redirect()->route('Kriteria');
+
+        return redirect()->route('Kriteria')->with('success', 'Data berhasil dihapus!');
     }
 }

@@ -1,4 +1,6 @@
-@include('layouts.header_admin')
+@extends('layouts.default_template')
+
+@section('content')
 <?php
 \App\Models\PerhitunganModel::hapus_hasil();
 
@@ -6,13 +8,13 @@
 $matriks_x = array();
 foreach($alternatifs as $alternatif):
     foreach($kriterias as $kriteria):
-        
+
         $id_alternatif = $alternatif->id_alternatif;
         $id_kriteria = $kriteria->id_kriteria;
-        
+
         $data_pencocokan = \App\Models\PerhitunganModel::data_nilai($id_alternatif, $id_kriteria);
         if(!empty($data_pencocokan['nilai'])){$nilai = $data_pencocokan['nilai'];}else{$nilai = 0;}
-        
+
         $matriks_x[$id_kriteria][$id_alternatif] = $nilai;
     endforeach;
 endforeach;
@@ -21,16 +23,38 @@ endforeach;
 //Matriks Ternormalisasi (R)
 $nilai_x = array();
 foreach($alternatifs as $alternatif):
-	foreach($kriterias as $kriteria):	
+	foreach($kriterias as $kriteria):
 		$id_kriteria = $kriteria->id_kriteria;
 		$id_alternatif = $alternatif->id_alternatif;
 		$nilai = $matriks_x[$id_kriteria][$id_alternatif];
-		
+
 		$nilai_max = @(max($matriks_x[$id_kriteria]));
 		$nilai_min = @(min($matriks_x[$id_kriteria]));
-		
-		$x = ($nilai_max-$nilai)/($nilai_max-$nilai_min);		
-			
+
+		// $x = ($nilai_max-$nilai)/($nilai_max-$nilai_min);
+
+         // Periksa pembagian dengan nol sebelum melakukan pembagian
+         if ($nilai_max - $nilai_min != 0) {
+    $x = ($nilai_max - $nilai) / ($nilai_max - $nilai_min);
+} else {
+    // Ubah alert menjadi SweetAlert2
+    echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'; // Tambahkan baris ini
+    echo '<script>
+            Swal.fire({
+                icon: "error",
+                title: "Lengkapi Data Terlebih Dahulu",
+                text: "Anda akan dialihkan ke halaman Penilaian",
+                showCancelButton: false,
+                confirmButtonColor: "#3085d6",
+                confirmButtonText: "OK"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                }
+            });
+        </script>';
+}
+
 		$nilai_x[$id_alternatif][$id_kriteria] = $x;
 	endforeach;
 endforeach;
@@ -46,9 +70,9 @@ foreach($alternatifs as $alternatif):
 		$id_alternatif = $alternatif->id_alternatif;
 		$bobot = $kriteria->bobot;
 		$nilai = $nilai_x[$id_alternatif][$id_kriteria];
-		
+
 		$r = $nilai*$bobot;
-			
+
 		$nilai_r[$id_alternatif][$id_kriteria] = $r;
 		$total_r += $r;
 	endforeach;
@@ -61,9 +85,9 @@ $r = array();
 $n_r = array();
 foreach($alternatifs as $alternatif):
 	$id_alternatif = $alternatif->id_alternatif;
-		
+
 	$nilai_max = @(max($nilai_r[$id_alternatif]));
-		
+
 	$r[$id_alternatif] = $nilai_max;
 	$n_r[$id_alternatif]['nilai'] = $nilai_max;
 endforeach;
@@ -84,23 +108,23 @@ endforeach;
 $nilai_q = array();
 foreach($alternatifs as $alternatif):
 	$id_alternatif = $alternatif->id_alternatif;
-	
+
 	$nil_s = $s[$id_alternatif];
 	$nil_r = $r[$id_alternatif];
 	$max_s = max($s_nilai);
 	$min_s = min($s_nilai);
 	$max_r = max($r_nilai);
 	$min_r = min($r_nilai);
-	
+
 	$v = 0.5;
 	$n1 = $nil_s-$min_s;
 	$n2 = $max_s-$min_s;
 	$n3 = $nil_r-$min_r;
 	$n4 = $max_r-$min_r;
-	
+
 	$bagi1=$n1/$n2;
 	$bagi2=$n3/$n4;
-	
+
 	$hasil1= $bagi1*$v;
 	$hasil2= $bagi2*(1-$v);
 	$q = $hasil1+$hasil2;
@@ -116,7 +140,7 @@ endforeach;
 <div class="card shadow mb-4">
     <!-- /.card-header -->
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-warning"><i class="fa fa-table"></i> Bobot Kriteria (W)</h6>
+        <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Bobot Kriteria (W)</h6>
     </div>
 
     <div class="card-body">
@@ -124,9 +148,9 @@ endforeach;
 			Nilai bobot kriteria didapatkan dengan menggunakan metode ROC.
 		</div>
 		<div class="table-responsive">
-			<table class="table table-bordered" width="100%" cellspacing="0">
-				<thead class="bg-warning text-white">
-					<tr align="center">
+            <table class="table table-striped text-sm" id="table1">
+                <thead>
+					<tr>
 						<th>Kode Kriteria</th>
 						<th>Nama Kriteria</th>
 						<th>Bobot</th>
@@ -134,11 +158,11 @@ endforeach;
 				</thead>
 				<tbody>
 					<?php foreach ($kriterias as $kriteria): ?>
-					<tr align="center">
+					<tr>
 						<td><?php echo $kriteria->kode_kriteria ?></td>
 						<td><?php echo $kriteria->keterangan ?></td>
 						<td>
-							<?php 
+							<?php
 								if($kriteria->bobot == NULL){
 									echo "-";
 								}else{
@@ -173,7 +197,7 @@ endforeach;
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
+					<?php
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
@@ -197,7 +221,7 @@ endforeach;
 						<th colspan="2">MAX</th>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<th>
-						<?php 
+						<?php
 							$id_kriteria = $kriteria->id_kriteria;
 							echo max($matriks_x[$id_kriteria]);
 						?>
@@ -208,7 +232,7 @@ endforeach;
 						<th colspan="2">MIN</th>
 						<?php foreach ($kriterias as $kriteria): ?>
 						<th>
-						<?php 
+						<?php
 							$id_kriteria = $kriteria->id_kriteria;
 							echo min($matriks_x[$id_kriteria]);
 						?>
@@ -241,13 +265,13 @@ endforeach;
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
+					<?php
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
 						<td><?= $no; ?></td>
 						<td align="left"><?= $alternatif->nama ?></td>
-						<?php						
+						<?php
 						foreach($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
 							$id_kriteria = $kriteria->id_kriteria;
@@ -286,13 +310,13 @@ endforeach;
 					</tr>
 				</thead>
 				<tbody>
-					<?php 
+					<?php
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 					<tr align="center">
 						<td><?= $no; ?></td>
 						<td align="left"><?= $alternatif->nama ?></td>
-						<?php						
+						<?php
 						foreach($kriterias as $kriteria):
 							$id_alternatif = $alternatif->id_alternatif;
 							$id_kriteria = $kriteria->id_kriteria;
@@ -324,23 +348,23 @@ endforeach;
 			<table class="table table-bordered" width="100%" cellspacing="0">
 				<thead class="bg-warning text-white">
 					<tr align="center">
-						<?php 
+						<?php
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 						<th>R<sub><?= $no ?></sub></th>
-						<?php 
+						<?php
 						$no++;
 						endforeach ?>
 					</tr>
 				</thead>
 				<tbody>
 					<tr align="center">
-						<?php 
-						foreach ($alternatifs as $alternatif): 
+						<?php
+						foreach ($alternatifs as $alternatif):
 						$id_alternatif = $alternatif->id_alternatif;
 						?>
 						<td>
-						<?php 
+						<?php
 						echo $r[$id_alternatif];
 						?>
 						</td>
@@ -363,23 +387,23 @@ endforeach;
 			<table class="table table-bordered" width="100%" cellspacing="0">
 				<thead class="bg-warning text-white">
 					<tr align="center">
-						<?php 
+						<?php
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
 						<th>S<sub><?= $no ?></sub></th>
-						<?php 
+						<?php
 						$no++;
 						endforeach ?>
 					</tr>
 				</thead>
 				<tbody>
 					<tr align="center">
-						<?php 
-						foreach ($alternatifs as $alternatif): 
+						<?php
+						foreach ($alternatifs as $alternatif):
 						$id_alternatif = $alternatif->id_alternatif;
 						?>
 						<td>
-						<?php 
+						<?php
 						echo $s[$id_alternatif];
 						?>
 						</td>
@@ -448,7 +472,7 @@ endforeach;
 						<td><?= $no; ?></td>
 						<td align="left"><?= $alternatif->nama ?></td>
 						<td>
-						<?php 
+						<?php
 						echo $hasil = $nilai_q[$id_alternatif];
 						?>
 						</td>
@@ -469,4 +493,4 @@ endforeach;
 	</div>
 </div>
 
-@include('layouts.footer_admin')
+@endsection
