@@ -28,6 +28,24 @@
             href="{{ asset('mazer/extensions/sweetalert2/sweetalert2.min.css') }}"
         />
 
+        <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">
+        <style>
+            .fontawesome-icons {
+                text-align: center;
+            }
+
+            article dl {
+                background-color: rgba(0, 0, 0, .02);
+                padding: 20px;
+            }
+
+            .fontawesome-icons .the-icon {
+                font-size: 24px;
+                line-height: 1.2;
+            }
+        </style>
+
+<script src="https://kit.fontawesome.com/1610082ff9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -122,6 +140,15 @@
                                 <span>Perhitungan</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item {{ request()->is('Hasil*') ? 'active' : '' }}">
+                            <a href="/Hasil" class='sidebar-link'>
+                                <i class="fa-solid fa-chart-area"></i>
+                                <span>Hasil Akhir</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-title">User</li>
                     </ul>
                 </div>
             </div>
@@ -244,12 +271,13 @@
     <script src="{{ asset('mazer/assets/static/js/pages/form-element-select.js') }}"></script>
     <script src="{{ asset('mazer/assets/extensions/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('mazer/assets/static/js/pages/date-picker.js') }}"></script>
+    <script src="https://kit.fontawesome.com/1610082ff9.js" crossorigin="anonymous"></script>
 
 
 
     {{-- <script src="{{ asset('mazer/assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('mazer/assets/static/js/pages/dashboard.js') }}"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     @if (session('error'))

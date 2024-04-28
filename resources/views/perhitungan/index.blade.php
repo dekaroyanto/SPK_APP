@@ -148,8 +148,8 @@ endforeach;
 			Nilai bobot kriteria didapatkan dengan menggunakan metode ROC.
 		</div>
 		<div class="table-responsive">
-            <table class="table table-striped text-sm" id="table1">
-                <thead>
+            <table class="table table-bordered" width="100%" cellspacing="0">
+				<thead class="bg-warning text-white">
 					<tr>
 						<th>Kode Kriteria</th>
 						<th>Nama Kriteria</th>

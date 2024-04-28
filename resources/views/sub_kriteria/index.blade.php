@@ -66,12 +66,12 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-striped text-sm" id="table1">
-                <thead class="text-center">
+                <thead>
                     <tr>
                         {{-- <th >No</th> --}}
                         <th>Nama Sub Kriteria</th>
                         <th>Nilai</th>
-                        <th width="15%">Aksi</th>
+                        <th width="10%">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

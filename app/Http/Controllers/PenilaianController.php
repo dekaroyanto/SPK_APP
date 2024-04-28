@@ -33,8 +33,7 @@ class PenilaianController extends Controller
             PenilaianModel::tambah_penilaian($id_alternatif, $id_kriteria[$i], $key);
             $i++;
         }
-        session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
-        return redirect('Penilaian');
+        return redirect('Penilaian')->with('success', 'Data berhasil disimpan!');
     }
 
     public function edit(Request $request)
@@ -53,7 +52,6 @@ class PenilaianController extends Controller
             }
             $i++;
         }
-        session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-        return redirect('Penilaian');
+        return redirect()->route('Penilaian')->with('success', 'Data berhasil diupdate!');
     }
 }
