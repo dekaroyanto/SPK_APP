@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AlternatifModel;
-use App\Models\KriteriaModel;
-use Illuminate\Http\Request;
 use App\Models\LoginModel;
+use Illuminate\Http\Request;
+use App\Models\KriteriaModel;
+use App\Models\AlternatifModel;
+use App\Models\PerhitunganModel;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -57,7 +58,8 @@ class LoginController extends Controller
             $data['page'] = "Dashboard";
             $countKriteria = KriteriaModel::count();
             $countAlternatif = AlternatifModel::count();
-            return view('dashboard', ['data' => $data, 'countKriteria' => $countKriteria, 'countAlternatif' => $countAlternatif]);
+            $hasil = PerhitunganModel::get_hasil();
+            return view('dashboard', ['data' => $data, 'countKriteria' => $countKriteria, 'countAlternatif' => $countAlternatif, 'hasil' => $hasil]);
         } else {
             return redirect()->route('login');
         }

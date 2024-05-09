@@ -19,7 +19,8 @@
                 <thead class="text-center">
                     <tr align="center">
                         <th width="5%">No</th>
-                        <th>Alternatif</th>
+                        <th>Nama</th>
+                        <th>Divisi</th>
                         <th width="15%">Aksi</th>
                     </tr>
                 </thead>
@@ -29,6 +30,7 @@
                     <tr align="center">
                         <td>{{ $no }}</td>
                         <td align="left">{{ $keys->nama }}</td>
+                        <td align="left">{{ $keys->divisi }}</td>
                         <?php $cek_tombol = \App\Models\PenilaianModel::untuk_tombol($keys->id_alternatif); ?>
 
                         <td>

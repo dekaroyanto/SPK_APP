@@ -24,7 +24,8 @@
                 <thead class="text-center">
                     <tr>
                         <th width="5%">No</th>
-                        <th class="text-center">Nama Alternatif</th>
+                        <th class="text-center">Nama</th>
+                        <th class="text-center">Divisi</th>
                         <th width="15%">Aksi</th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@
                         <tr align="center">
                             <td>{{ $no }}</td>
                             <td class="text-left">{{ $data->nama }}</td>
+                            <td class="text-left">{{ $data->divisi }}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a data-toggle="tooltip" data-placement="bottom" title="Edit Data" href="{{ url('Alternatif/edit/'.$data->id_alternatif) }}" class="btn btn-warning btn-sm"><i

@@ -14,18 +14,28 @@
     {!! session('message') !!}
 @endif
 
-<div class="card shadow mb-4">
+<div class="card mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-warning"><i class="fas fa-fw fa-plus"></i> Tambah Data Alternatif</h6>
+        <h6 class="m-0 font-weight-bold"><i class="fas fa-fw fa-plus"></i> Tambah Data Alternatif</h6>
     </div>
 
     <form action="{{ url('Alternatif/simpan') }}" method="POST">
         {{ csrf_field() }}
         <div class="card-body">
             <div class="row">
-                <div class="form-group col-md-12">
-                    <label class="font-weight-bold">Nama Alternatif</label>
-                    <input autocomplete="off" type="text" name="nama" required class="form-control"/>
+                <div class="form-group col-md-6">
+                    <label for="jabatan" class="form-label">Nama</label>
+                    <input autocomplete="off" type="text" name="nama" required class="form-control round form-control-lg"/>
+                    {{-- <input class="form-control form-control-lg" type="text" placeholder="Large Input"> --}}
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="jabatan" class="form-label">Divisi</label>
+                        <select class="choices form-select" name="divisi"
+                            id="divisi">
+                                <option value="MARKETING">MARKETING</option>
+                                <option value="COLLECTION">COLLECTION</option>
+                        </select>
                 </div>
             </div>
         </div>

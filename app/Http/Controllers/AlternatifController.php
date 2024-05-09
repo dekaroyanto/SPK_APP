@@ -41,11 +41,13 @@ class AlternatifController extends Controller
         }
 
         $this->validate($request, [
-            'nama' => 'required'
+            'nama' => 'required',
+            'divisi' => 'required'
         ]);
 
         $data = [
-            'nama' => $request->nama
+            'nama' => $request->nama,
+            'divisi' => $request->divisi
         ];
 
         $result = AlternatifModel::create($data);
@@ -81,11 +83,13 @@ class AlternatifController extends Controller
         }
 
         $this->validate($request, [
-            'nama' => 'required'
+            'nama' => 'required',
+            'divisi' => 'required',
         ]);
 
         $data = [
-            'nama' => $request->nama
+            'nama' => $request->nama,
+            'divisi' => $request->divisi
         ];
 
         $alternatif = AlternatifModel::findOrFail($id_alternatif);

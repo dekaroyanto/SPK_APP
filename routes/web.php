@@ -21,6 +21,7 @@ use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\HasilController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Models\PerhitunganModel;
 
 Route::get('/', function () {return view('login');});
 
@@ -64,6 +65,7 @@ Route::post('/Penilaian/edit', [PenilaianController::class, 'edit']);
 
 /* Perhitungan */
 Route::get('/Perhitungan', [PerhitunganController::class, 'index'])->name('Perhitungan');
+Route::get('/Perhitungan/matrixkeputusan', [PerhitunganController::class, 'matrixkeputusan'])->name('perhitungan.matrixkeputusan');
 
 /* Hasil */
 Route::get('/Hasil', [HasilController::class, 'index'])->name('Hasil');

@@ -30,7 +30,7 @@ class PerhitunganModel extends Model
     {
         return DB::table('hasil')
             ->join('alternatif', 'hasil.id_alternatif', '=', 'alternatif.id_alternatif')
-            ->orderBy('nilai', 'DESC')
+            ->orderBy('nilai', 'ASC')
             ->get();
     }
 }
