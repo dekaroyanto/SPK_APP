@@ -12,12 +12,7 @@ class UserController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "User";
@@ -30,12 +25,7 @@ class UserController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $data['page'] = "User";
@@ -48,12 +38,7 @@ class UserController extends Controller
         $id_user_level = session('log.id_user_level');
 
         if ($id_user_level != 1) {
-            ?>
-            <script>
-                window.location='<?php echo url("Dashboard"); ?>'
-                alert('Anda tidak berhak mengakses halaman ini!');
-            </script>
-            <?php
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
         }
 
         $this->validate($request, [
@@ -75,11 +60,9 @@ class UserController extends Controller
         $result = UserModel::create($data);
 
         if ($result) {
-            $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil disimpan!</div>');
-            return redirect('User');
+            return redirect('User')->with('success', 'Data berhasil disimpan!');
         } else {
-            $request->session()->flash('message', '<div class="alert alert-danger" role="alert">Data gagal disimpan!</div>');
-            return redirect('User/tambah');
+            return redirect('User/tambah')->with('error', 'Data gagal disimpan!');
         }
     }
 
@@ -138,8 +121,7 @@ class UserController extends Controller
         $user = UserModel::findOrFail($id_user);
         $user->update($data);
 
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil diupdate!</div>');
-        return redirect('User');
+        return redirect('User')->with('success', 'Data berhasil diupdate!');
     }
 
     public function destroy(Request $request, $id_user)
@@ -151,8 +133,7 @@ class UserController extends Controller
         }
 
         UserModel::findOrFail($id_user)->delete();
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data berhasil dihapus!</div>');
-        return redirect('User');
+        return redirect('User')->with('success', 'Data berhasil dihapus!');
     }
 
 }

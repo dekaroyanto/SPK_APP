@@ -20,17 +20,14 @@
     <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/table-datatable.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/choices.js/public/assets/styles/choices.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/flatpickr/flatpickr.min.css') }}">
-    <link
-            rel="stylesheet"
-            href="{{ asset('mazer/extensions/sweetalert2/sweetalert2.min.css') }}"
-        />
+    <link rel="stylesheet" href="{{ asset('mazer/extensions/sweetalert2/sweetalert2.min.css') }}" />
 
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">
     @yield('css')
     {{-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> --}}
 
 
-<script src="https://kit.fontawesome.com/1610082ff9.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1610082ff9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -91,6 +88,13 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item {{ request()->is('Alternatif*') ? 'active' : '' }}">
+                            <a href="/Alternatif" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Calon Karyawan</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item {{ request()->is('Kriteria*') ? 'active' : '' }}">
                             <a href="/Kriteria" class='sidebar-link'>
                                 <i class="bi bi-grid-1x2-fill"></i>
@@ -105,12 +109,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ request()->is('Alternatif*') ? 'active' : '' }}">
-                            <a href="/Alternatif" class='sidebar-link'>
-                                <i class="bi bi-people-fill"></i>
-                                <span>Calon Karyawan</span>
-                            </a>
-                        </li>
+
 
                         <li class="sidebar-item {{ request()->is('Penilaian*') ? 'active' : '' }}">
                             <a href="/Penilaian" class='sidebar-link'>
@@ -142,12 +141,12 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ request()->is('Profile*') ? 'active' : '' }}">
+                        {{-- <li class="sidebar-item {{ request()->is('Profile*') ? 'active' : '' }}">
                             <a href="/Profile" class='sidebar-link'>
                                 <i class="fa-solid fa-user-gear"></i>
                                 <span>Profile User</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -192,9 +191,9 @@
                                     <div class="user-menu d-flex">
                                         <div class="user-name text-end me-3">
 
-                                                <h6 class="mt-2 text-gray-600">
-                                                    Hi,  {{ session('log.nama') }}!
-                                                </h6>
+                                            <h6 class="mt-2 text-gray-600">
+                                                Hi, {{ session('log.nama') }}!
+                                            </h6>
                                         </div>
                                         <div class="user-img d-flex align-items-center">
                                             <div class="avatar avatar-md">
@@ -215,15 +214,15 @@
                                     <li>
                                         <a class="dropdown-item" href="{{ url('Profile') }}">
                                             <i class="bi bi-person-gear"></i>
-                                            Profile
+                                            Pengaturan Akun
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a class="dropdown-item" href="#">
                                             <i class="bi bi-person-add"></i>
                                             Tambah Akun
                                         </a>
-                                    </li>
+                                    </li> --}}
 
                                     <hr class="dropdown-divider">
                                     </li>
@@ -278,7 +277,9 @@
 
     {{-- <script src="{{ asset('mazer/assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('mazer/assets/static/js/pages/dashboard.js') }}"></script> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
     @if (session('error'))
@@ -314,24 +315,24 @@
         });
     </script>
 
-<script>
-    function confirmDelete(url) {
-        Swal.fire({
-            title: 'Apakah anda yakin?',
-            text: "Anda tidak akan dapat mengembalikan data ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, hapus!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = url;
-            }
-        });
-    }
-</script>
+    <script>
+        function confirmDelete(url) {
+            Swal.fire({
+                title: 'Apakah anda yakin?',
+                text: "Anda tidak akan dapat mengembalikan data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            });
+        }
+    </script>
 
     @yield('jscript')
 
@@ -354,6 +355,25 @@
                 }
             });
         });
+    </script>
+
+    <script>
+        function confirmDeleteAll() {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan menghapus semua data!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Hapus Semua!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('alternatif.destroy-all') }}";
+                }
+            });
+        }
     </script>
 
 </body>

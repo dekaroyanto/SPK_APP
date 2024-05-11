@@ -34,8 +34,7 @@ class ProfileController extends Controller
         $user = UserModel::findOrFail($id_user);
         $user->update($data);
 
-        $request->session()->flash('message', '<div class="alert alert-success" role="alert">Data profile berhasil diupdate!</div>');
-        return redirect('Profile');
+        return redirect('Profile')->with('success', 'Data profile berhasil diupdate!');
     }
 
 }

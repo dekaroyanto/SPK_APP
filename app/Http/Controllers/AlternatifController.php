@@ -7,7 +7,7 @@ use App\Models\AlternatifModel;
 
 class AlternatifController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $id_user_level = session('log.id_user_level');
 
@@ -16,7 +16,18 @@ class AlternatifController extends Controller
         }
 
         $data['page'] = "Alternatif";
-        $data['list'] = AlternatifModel::all();
+
+        $data['divisions'] = AlternatifModel::select('divisi')->distinct()->get();
+
+        $query = AlternatifModel::query();
+
+        if ($request->has('divisi') && $request->divisi != "") {
+            $divisi = $request->divisi;
+            $query->where('divisi', $divisi);
+        }
+
+        $data['list'] = $query->get();
+
         return view('alternatif.index', $data);
     }
 
@@ -42,11 +53,13 @@ class AlternatifController extends Controller
 
         $this->validate($request, [
             'nama' => 'required',
+            'notelp' => 'required',
             'divisi' => 'required'
         ]);
 
         $data = [
             'nama' => $request->nama,
+            'notelp' => $request->notelp,
             'divisi' => $request->divisi
         ];
 
@@ -84,11 +97,13 @@ class AlternatifController extends Controller
 
         $this->validate($request, [
             'nama' => 'required',
+            'notelp' => 'required',
             'divisi' => 'required',
         ]);
 
         $data = [
             'nama' => $request->nama,
+            'notelp' => $request->notelp,
             'divisi' => $request->divisi
         ];
 
@@ -109,5 +124,18 @@ class AlternatifController extends Controller
         AlternatifModel::findOrFail($id_alternatif)->delete();
 
         return redirect()->route('Alternatif')->with('success', 'Data berhasil dihapus!');
+    }
+
+    public function destroyAll()
+    {
+        $id_user_level = session('log.id_user_level');
+
+        if ($id_user_level != 1) {
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+        }
+
+        AlternatifModel::query()->delete();
+
+        return redirect()->route('Alternatif')->with('success', 'Semua data berhasil dihapus!');
     }
 }

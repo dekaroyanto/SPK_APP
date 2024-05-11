@@ -57,6 +57,8 @@ Route::get('/Alternatif/edit/{id_alternatif}', [AlternatifController::class, 'ed
 Route::get('/Alternatif/destroy/{id_alternatif}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
 Route::post('/Alternatif/simpan', [AlternatifController::class, 'simpan']);
 Route::post('/Alternatif/update/{id_alternatif}', [AlternatifController::class, 'update'])->name('alternatif.update');
+Route::get('/Alternatif/destroy-all', [AlternatifController::class, 'destroyAll'])->name('alternatif.destroy-all');
+
 
 /* Penilaian */
 Route::get('/Penilaian', [PenilaianController::class, 'index'])->name('Penilaian');
