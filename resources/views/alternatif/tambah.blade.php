@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Alternatif</h1>
+        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Calon Karyawan</h1>
 
         <a href="{{ url('Alternatif') }}" class="btn btn-secondary"><i class="bi bi-arrow-left"></i></span>
             <span class="text">Kembali</span>
@@ -16,7 +16,7 @@
 
     <div class="card mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold"><i class="fas fa-fw fa-plus"></i> Tambah Data Alternatif</h6>
+            <h6 class="m-0 font-weight-bold"><i class="fas fa-fw fa-plus"></i> Tambah Data Calon Karyawan</h6>
         </div>
 
         <form action="{{ url('Alternatif/simpan') }}" method="POST">

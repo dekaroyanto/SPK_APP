@@ -10,7 +10,7 @@
     <div class="mb-2 d-flex flex-column flex-sm-row">
         <a href="{{ url('Alternatif/tambah') }}" class="btn btn-primary mb-2 mb-sm-0"> <i class="fa fa-plus"></i> Tambah Data
         </a>
-        <button class="btn btn-danger ml-sm-2" onclick="confirmDeleteAll()"> <i class="fa fa-trash"></i> Hapus Semua Data
+        <button class="btn btn-danger ml-sm-2 ms-2" onclick="confirmDeleteAll()"> <i class="fa fa-trash"></i> Hapus Semua Data
         </button>
     </div>
 
@@ -30,7 +30,8 @@
                         <select class="form-control" id="divisiFilter" name="divisi">
                             <option value="">Semua Divisi</option>
                             @foreach ($divisions as $division)
-                                <option value="{{ $division->divisi }}">{{ $division->divisi }}</option>
+                                <option value="{{ $division->divisi }}" @if (request('divisi') == $division->divisi) selected @endif>
+                                    {{ $division->divisi }}</option>
                             @endforeach
                         </select>
                         <button type="submit" class="btn btn-primary">Filter</button>
@@ -58,8 +59,11 @@
                         @foreach ($list as $data)
                             <tr>
                                 <td>{{ $no }}</td>
-                                <td class="text-left">{{ substr($data->nama, 0, 2) }}**</td>
-                                <td class="text-center">0{{ substr($data->notelp, 0, 4) }}**</td>
+                                <td class="text-left">{{ substr($data->nama, 0, 2) }}****</td>
+                                {{-- <td class="text-center">0{{ substr($data->notelp, 0, 4) }}**</td> --}}
+                                <td class="text-center">
+                                    0{{ substr($data->notelp, 0, 1) }}******{{ substr($data->notelp, -3) }}
+                                </td>
                                 <td class="text-center">{{ $data->divisi }}</td>
                                 {{-- <td class="text-center">0{{ $data->notelp }}</td> --}}
                                 <td class="text-center">

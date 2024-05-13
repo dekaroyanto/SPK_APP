@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Alternatif</h1>
+        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-users"></i> Data Calon Karyawan</h1>
 
         <a href="{{ url('Alternatif') }}" class="btn btn-secondary btn-icon-split"><span class="icon text-white-50"><i
                     class="fas fa-arrow-left"></i></span>
@@ -13,7 +13,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold"><i class="fas fa-fw fa-edit"></i> Edit Data Alternatif</h6>
+            <h6 class="m-0 font-weight-bold"><i class="fas fa-fw fa-edit"></i> Edit Data Calon Karyawan</h6>
         </div>
 
         <form method="POST" action="{{ url('Alternatif/update/' . $alternatif->id_alternatif) }}">
@@ -22,7 +22,7 @@
                 <div class="row">
                     <input type="hidden" name="id_alternatif" value="{{ $alternatif->id_alternatif }}">
                     <div class="form-group col-md-12">
-                        <label class="font-weight-bold">Nama Alternatif</label>
+                        <label class="font-weight-bold">Nama</label>
                         <input autocomplete="off" type="text" name="nama" value="{{ $alternatif->nama }}" required
                             class="form-control" />
                     </div>
