@@ -8,31 +8,31 @@ use App\Models\KriteriaModel;
 class KriteriaController extends Controller
 {
     public function index()
-{
-    $id_user_level = session('log.id_user_level');
+    {
+        $id_user_level = session('log.id_user_level');
 
-    if ($id_user_level != 1) {
-        return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+        if ($id_user_level != 1) {
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+        }
+
+        $data['page'] = "Kriteria";
+        $data['list'] = KriteriaModel::all();
+        return view('kriteria.index', $data);
     }
-
-    $data['page'] = "Kriteria";
-    $data['list'] = KriteriaModel::all();
-    return view('kriteria.index', $data);
-}
 
     public function generate(Request $request)
     {
         $kriteria = KriteriaModel::all();
-        foreach ($kriteria as $x){
+        foreach ($kriteria as $x) {
             $total = count($kriteria);
             $b = 0;
-            foreach ($kriteria as $y){
-                if($y->prioritas >= $x->prioritas){
-                    $b += 1/$y->prioritas;
+            foreach ($kriteria as $y) {
+                if ($y->prioritas >= $x->prioritas) {
+                    $b += 1 / $y->prioritas;
                 }
             }
             $id_kriteria = $x->id_kriteria;
-            $bobot = $b/$total;
+            $bobot = $b / $total;
 
             $data = [
                 'bobot' => $bobot,
@@ -122,7 +122,6 @@ class KriteriaController extends Controller
         $kriteria->update($data);
 
         return redirect()->route('Kriteria')->with('success', 'Data berhasil diupdate!');
-
     }
 
     public function destroy(Request $request, $id_kriteria)

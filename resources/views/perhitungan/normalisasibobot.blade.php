@@ -58,21 +58,21 @@
                 $x = ($nilai_max - $nilai) / ($nilai_max - $nilai_min);
             } else {
                 // Ubah alert menjadi SweetAlert2
-                echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'; // Tambahkan baris ini
+                echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
                 echo '<script>
-                                                            Swal.fire({
-                                                                icon: "error",
-                                                                title: "Lengkapi Data Terlebih Dahulu",
-                                                                text: "Anda akan dialihkan ke halaman Penilaian",
-                                                                showCancelButton: false,
-                                                                confirmButtonColor: "#3085d6",
-                                                                confirmButtonText: "OK"
-                                                            }).then((result) => {
-                                                                if (result.isConfirmed) {
-                                                                    window.location.href = "/Penilaian"; // Redirect to Penilaian page
-                                                                }
-                                                            });
-                                                        </script>';
+                                                                                                                                                                                                    Swal.fire({
+                                                                                                                                                                                                        icon: "error",
+                                                                                                                                                                                                        title: "Lengkapi Data Terlebih Dahulu",
+                                                                                                                                                                                                        text: "Anda akan dialihkan ke halaman Penilaian",
+                                                                                                                                                                                                        showCancelButton: false,
+                                                                                                                                                                                                        confirmButtonColor: "#3085d6",
+                                                                                                                                                                                                        confirmButtonText: "OK"
+                                                                                                                                                                                                    }).then((result) => {
+                                                                                                                                                                                                        if (result.isConfirmed) {
+                                                                                                                                                                                                            window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                    });
+                                                                                                                                                                                                </script>';
             }
     
             $nilai_x[$id_alternatif][$id_kriteria] = $x;
@@ -184,7 +184,7 @@
     <div class="card shadow mb-4">
         <!-- /.card-header -->
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-warning"><i class="fa fa-table"></i> Matriks Keputusan (X)</h6>
+            <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Normalisasi Bobot (R)</h6>
         </div>
 
         <div class="card-body">
@@ -196,14 +196,14 @@
                             <th>Nama Alternatif</th>
                             <?php foreach ($kriterias as $kriteria): ?>
                             <th><?= $kriteria->kode_kriteria ?></th>
-                            <?php endforeach; ?>
+                            <?php endforeach ?>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 						$no=1;
 						foreach ($alternatifs as $alternatif): ?>
-                        <tr>
+                        <tr align="center">
                             <td><?= $no ?></td>
                             <td align="left"><?= $alternatif->nama ?></td>
                             <?php
@@ -211,69 +211,15 @@
                                 $id_alternatif = $alternatif->id_alternatif;
                                 $id_kriteria = $kriteria->id_kriteria;
                                 echo '<td>';
-                                echo $matriks_x[$id_kriteria][$id_alternatif];
+                                echo $nilai_r[$id_alternatif][$id_kriteria];
                                 echo '</td>';
                             endforeach;
                             ?>
                         </tr>
                         <?php
 						$no++;
-						endforeach;
+						endforeach
 					?>
-                        {{-- <tr>
-                            <th colspan="2">MAX</th>
-                            <?php foreach ($kriterias as $kriteria): ?>
-                            <th>
-                                <?php
-                                $id_kriteria = $kriteria->id_kriteria;
-                                echo max($matriks_x[$id_kriteria]);
-                                ?>
-                            </th>
-                            <?php endforeach; ?>
-                        </tr>
-                        <tr>
-                            <th colspan="2">MIN</th>
-                            <?php foreach ($kriterias as $kriteria): ?>
-                            <th>
-                                <?php
-                                $id_kriteria = $kriteria->id_kriteria;
-                                echo min($matriks_x[$id_kriteria]);
-                                ?>
-                            </th>
-                            <?php endforeach; ?>
-                        </tr> --}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Tabel MAX dan MIN -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-striped text-sm" id="table1">
-                    <thead class="text-center">
-                        <tr>
-                            <th width='55%'></th>
-                            <?php foreach ($kriterias as $kriteria): ?>
-                            <th><?= $kriteria->kode_kriteria ?></th>
-                            <?php endforeach; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th>MAX</th>
-                            <?php foreach ($kriterias as $kriteria): ?>
-                            <td align="center"><?php echo max($matriks_x[$kriteria->id_kriteria]); ?></td>
-                            <?php endforeach; ?>
-                        </tr>
-                        <tr>
-                            <th>MIN</th>
-                            <?php foreach ($kriterias as $kriteria): ?>
-                            <td align="center"><?php echo min($matriks_x[$kriteria->id_kriteria]); ?></td>
-                            <?php endforeach; ?>
-                        </tr>
                     </tbody>
                 </table>
             </div>

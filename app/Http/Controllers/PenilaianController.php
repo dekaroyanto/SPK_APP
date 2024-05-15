@@ -9,7 +9,7 @@ use App\Models\KriteriaModel;
 
 class PenilaianController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $id_user_level = session('log.id_user_level');
 
@@ -18,7 +18,13 @@ class PenilaianController extends Controller
         }
 
         $data['page'] = "Penilaian";
-        $data['alternatif'] = AlternatifModel::all();
+        $data['divisions'] = AlternatifModel::select('divisi')->distinct()->get();
+        $query = AlternatifModel::query();
+        if ($request->has('divisi') && $request->divisi != "") {
+            $divisi = $request->divisi;
+            $query->where('divisi', $divisi);
+        }
+        $data['alternatif'] = $query->get();
         $data['kriteria'] = KriteriaModel::all();
         return view('penilaian.index', $data);
     }

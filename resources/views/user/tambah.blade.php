@@ -14,7 +14,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-warning"><i class="fas fa-fw fa-plus"></i> Tambah Data User</h6>
+            <h6 class="m-0 font-weight-bold"><i class="fas fa-fw fa-plus"></i> Tambah Data User</h6>
         </div>
 
         <form action="{{ url('User/simpan') }}" method="POST">

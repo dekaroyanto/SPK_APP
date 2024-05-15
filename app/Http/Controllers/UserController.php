@@ -105,17 +105,15 @@ class UserController extends Controller
         $this->validate($request, [
             'nama' => 'required',
             'email' => 'required',
-            'privilege' => 'required',
             'username' => 'required',
-            'password' => 'required',
+
         ]);
 
         $data = [
-            'id_user_level' => $request->input('privilege'),
+
             'nama' => $request->input('nama'),
             'email' => $request->input('email'),
             'username' => $request->input('username'),
-            'password' => md5($request->input('password'))
         ];
 
         $user = UserModel::findOrFail($id_user);
@@ -135,5 +133,4 @@ class UserController extends Controller
         UserModel::findOrFail($id_user)->delete();
         return redirect('User')->with('success', 'Data berhasil dihapus!');
     }
-
 }

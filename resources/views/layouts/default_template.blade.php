@@ -109,14 +109,41 @@
                             </a>
                         </li>
 
-
-
                         <li class="sidebar-item {{ request()->is('Penilaian*') ? 'active' : '' }}">
                             <a href="/Penilaian" class='sidebar-link'>
                                 <i class="bi bi-pencil-square"></i>
                                 <span>Penilaian</span>
                             </a>
                         </li>
+
+                        {{-- <li
+                            class="sidebar-item has-sub {{ request()->is('Perhitungan*', 'normalisasi*') ? 'active' : '' }}">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Perhitungan</span>
+                            </a>
+
+                            <ul class="submenu">
+                                <li
+                                    class="submenu-item  {{ url()->current() == url('Perhitungan') ? 'active' : '' }}">
+                                    <a href="{{ url('Perhitungan') }}" class="submenu-link">Bobot Kriteria</a>
+                                </li>
+
+                                <li
+                                    class="submenu-item  {{ url()->current() == url('Perhitungan/normalisasi') ? 'active' : '' }}">
+                                    <a href="{{ url('Perhitungan/normalisasibobot') }}"
+                                        class="submenu-link">Normalisasi
+                                        Bobot</a>
+                                </li>
+
+                                <li
+                                    class="submenu-item  {{ url()->current() == url('Perhitungan/normalisasibobot') ? 'active' : '' }}">
+                                    <a href="{{ url('Perhitungan/normalisasibobot') }}"
+                                        class="submenu-link">Normalisasi
+                                        Bobot</a>
+                                </li>
+                            </ul>
+                        </li> --}}
 
                         <li class="sidebar-item {{ request()->is('Perhitungan*') ? 'active' : '' }}">
                             <a href="/Perhitungan" class='sidebar-link'>
@@ -204,26 +231,19 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                                     style="min-width: 11rem;">
-                                    {{-- <li>
-                                        @if (Auth::check())
-                                            <h6 class="mb-0 ms-2 text-gray-600">
-                                                Hi, {{ Auth::user()->name }}!
-                                            </h6>
-                                        @endif
-                                    </li> --}}
                                     <li>
                                         <a class="dropdown-item" href="{{ url('Profile') }}">
                                             <i class="bi bi-person-gear"></i>
-                                            Pengaturan Akun
+                                            Profile
                                         </a>
                                     </li>
-                                    {{-- <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bi bi-person-add"></i>
-                                            Tambah Akun
-                                        </a>
-                                    </li> --}}
 
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url('Profile/ChangePassword') }}">
+                                            <i class="bi bi-person-gear"></i>
+                                            Ganti Password
+                                        </a>
+                                    </li>
                                     <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item" id="logout" href="{{ url('Logout') }}"><i

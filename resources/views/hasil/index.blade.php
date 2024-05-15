@@ -18,7 +18,8 @@
                 <table class="table table-striped text-sm" id="table1">
                     <thead class="text-center">
                         <tr>
-                            <th>Nama Alternatif</th>
+                            <th>Nama</th>
+                            <th>No Telepon</th>
                             <th>Divisi</th>
                             <th width="15%">Ranking</th>
                         </tr>
@@ -29,7 +30,11 @@
                         @endphp
                         @foreach ($hasil as $keys)
                             <tr>
-                                <td>{{ $keys->nama }}</td>
+                                {{-- <td>{{ $keys->nama }}</td> --}}
+                                <td class="text-left">{{ substr($keys->nama, 0, 2) }}****</td>
+                                <td class="text-center">
+                                    0{{ substr($keys->notelp, 0, 1) }}******{{ substr($keys->notelp, -3) }}
+                                </td>
                                 <td>{{ $keys->divisi }}</td>
                                 <td>{{ $no }}</td>
                             </tr>

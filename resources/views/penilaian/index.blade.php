@@ -10,6 +10,21 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Daftar Data Penilaian</h6>
+
+            <form action="{{ route('Penilaian') }}" method="GET">
+                <div class="form-group col-md-4">
+                    <div style="display: flex; align-items: center;">
+                        <select class="form-control" id="divisiFilter" name="divisi">
+                            <option value="">Semua Divisi</option>
+                            @foreach ($divisions as $division)
+                                <option value="{{ $division->divisi }}" @if (request('divisi') == $division->divisi) selected @endif>
+                                    {{ $division->divisi }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="card-body">
@@ -135,7 +150,8 @@
                                                                             $subs_kriteria['id_kriteria'],
                                                                         );
                                                                     @endphp
-                                                                    <option value="{{ $subs_kriteria['id_sub_kriteria'] }}"
+                                                                    <option
+                                                                        value="{{ $subs_kriteria['id_sub_kriteria'] }}"
                                                                         {{ isset($subs_kriteria['id_sub_kriteria']) && $nilai && $subs_kriteria['id_sub_kriteria'] == $nilai->nilai ? 'selected' : '' }}>
                                                                         {{ $subs_kriteria['deskripsi'] }}</option>
                                                                 @endforeach

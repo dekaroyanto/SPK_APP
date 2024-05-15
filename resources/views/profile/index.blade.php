@@ -29,10 +29,10 @@
                             class="form-control">
                     </div>
 
-                    <div class="form-group col-md-6">
+                    {{-- <div class="form-group col-md-6">
                         <label class="font-weight-bold">New Password</label>
                         <input autocomplete="off" type="password" name="password" required class="form-control">
-                    </div>
+                    </div> --}}
 
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">Nama Lengkap</label>

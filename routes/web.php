@@ -23,7 +23,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Models\PerhitunganModel;
 
-Route::get('/', function () {return view('login');});
+Route::get('/', function () {
+    return view('login');
+});
 
 /* Login */
 Route::get('/Login', [LoginController::class, 'index'])->name('login');
@@ -68,6 +70,7 @@ Route::post('/Penilaian/edit', [PenilaianController::class, 'edit']);
 /* Perhitungan */
 Route::get('/Perhitungan', [PerhitunganController::class, 'index'])->name('Perhitungan');
 Route::get('/Perhitungan/matrixkeputusan', [PerhitunganController::class, 'matrixkeputusan'])->name('perhitungan.matrixkeputusan');
+Route::get('/Perhitungan/normalisasi', [PerhitunganController::class, 'normalisasi'])->name('perhitungan.normalisasi');
 
 /* Hasil */
 Route::get('/Hasil', [HasilController::class, 'index'])->name('Hasil');
@@ -87,3 +90,7 @@ Route::get('/User/detail/{id_user}', [UserController::class, 'detail'])->name('u
 /* Profile */
 Route::get('/Profile', [ProfileController::class, 'index'])->name('Profile');
 Route::post('/Profile/update/{id_user}', [ProfileController::class, 'update'])->name('profile.update');
+
+/* Change Password */
+Route::get('/Profile/ChangePassword', [ProfileController::class, 'ChangePasswordForm'])->name('ChangePasswordForm');
+Route::post('/Profile/ChangePassword/{id_user}', [ProfileController::class, 'changePassword'])->name('ChangePassword');

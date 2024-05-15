@@ -37,4 +37,32 @@ class PerhitunganController extends Controller
         $data['kriterias'] = KriteriaModel::all();
         return view('perhitungan.matrixkeputusan', $data);
     }
+
+    public function normalisasi()
+    {
+        $id_user_level = session('log.id_user_level');
+
+        if ($id_user_level != 1) {
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+        }
+
+        $data['page'] = "Perhitungan";
+        $data['alternatifs'] = AlternatifModel::all();
+        $data['kriterias'] = KriteriaModel::all();
+        return view('perhitungan.normalisasi', $data);
+    }
+
+    public function normalisasibobot()
+    {
+        $id_user_level = session('log.id_user_level');
+
+        if ($id_user_level != 1) {
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+        }
+
+        $data['page'] = "Perhitungan";
+        $data['alternatifs'] = AlternatifModel::all();
+        $data['kriterias'] = KriteriaModel::all();
+        return view('perhitungan.normalisasibobot', $data);
+    }
 }
