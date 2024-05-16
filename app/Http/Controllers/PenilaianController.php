@@ -19,10 +19,15 @@ class PenilaianController extends Controller
 
         $data['page'] = "Penilaian";
         $data['divisions'] = AlternatifModel::select('divisi')->distinct()->get();
-        $query = AlternatifModel::query();
+        $query = AlternatifModel::query()->orderBy('id_alternatif', 'desc');
+
         if ($request->has('divisi') && $request->divisi != "") {
             $divisi = $request->divisi;
             $query->where('divisi', $divisi);
+        }
+        if ($request->has('periode') && $request->periode != "") {
+            $periode = $request->periode;
+            $query->where('periode', $periode);
         }
         $data['alternatif'] = $query->get();
         $data['kriteria'] = KriteriaModel::all();

@@ -21,7 +21,14 @@
                                     {{ $division->divisi }}</option>
                             @endforeach
                         </select>
-                        <button type="submit" class="btn btn-primary">Filter</button>
+                        {{-- <button type="submit" class="btn btn-primary">Filter</button> --}}
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <div style="display: flex; align-items: center;">
+                        <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
+                            value="{{ request('periode') }}">
+                        <button type="submit" class="btn btn-primary ml-2">Filter</button>
                     </div>
                 </div>
             </form>
@@ -36,6 +43,7 @@
                             <th class="text-center">Nama</th>
                             <th class="text-center">No Telepon</th>
                             <th class="text-center">Divisi</th>
+                            <th class="text-center">Tanggal</th>
                             <th width="15%" class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -49,6 +57,7 @@
                                     0{{ substr($keys->notelp, 0, 1) }}******{{ substr($keys->notelp, -3) }}
                                 </td>
                                 <td class="text-center">{{ $keys->divisi }}</td>
+                                <td class="text-center">{{ date('F Y', strtotime($keys->periode)) }}</td>
                                 <?php $cek_tombol = \App\Models\PenilaianModel::untuk_tombol($keys->id_alternatif); ?>
 
                                 <td>

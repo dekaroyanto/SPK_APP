@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/choices.js/public/assets/styles/choices.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/flatpickr/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/extensions/sweetalert2/sweetalert2.min.css') }}" />
+    <link rel="stylesheet"
+        href="{{ asset('mazer/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('mazer/assets/compiled/css/table-datatable-jquery.css') }}">
 
     <link rel="stylesheet" href="{{ asset('mazer/assets/extensions/@fortawesome/fontawesome-free/css/all.min.css') }}">
     @yield('css')
@@ -116,7 +121,7 @@
                             </a>
                         </li>
 
-                        {{-- <li
+                        <li
                             class="sidebar-item has-sub {{ request()->is('Perhitungan*', 'normalisasi*') ? 'active' : '' }}">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
@@ -130,10 +135,15 @@
                                 </li>
 
                                 <li
+                                    class="submenu-item  {{ url()->current() == url('Perhitungan/matrixkeputusan') ? 'active' : '' }}">
+                                    <a href="{{ url('Perhitungan/matrixkeputusan') }}" class="submenu-link">Matriks
+                                        Keputusan</a>
+                                </li>
+
+                                <li
                                     class="submenu-item  {{ url()->current() == url('Perhitungan/normalisasi') ? 'active' : '' }}">
-                                    <a href="{{ url('Perhitungan/normalisasibobot') }}"
-                                        class="submenu-link">Normalisasi
-                                        Bobot</a>
+                                    <a href="{{ url('Perhitungan/normalisasi') }}" class="submenu-link">Normalisasi
+                                        Matriks</a>
                                 </li>
 
                                 <li
@@ -142,8 +152,18 @@
                                         class="submenu-link">Normalisasi
                                         Bobot</a>
                                 </li>
+
+                                <li
+                                    class="submenu-item  {{ url()->current() == url('Perhitungan/nilaisr') ? 'active' : '' }}">
+                                    <a href="{{ url('Perhitungan/nilaisr') }}" class="submenu-link">Nilai S & R</a>
+                                </li>
+
+                                <li
+                                    class="submenu-item  {{ url()->current() == url('Perhitungan/nilaiq') ? 'active' : '' }}">
+                                    <a href="{{ url('Perhitungan/nilaiq') }}" class="submenu-link">Nilai Q</a>
+                                </li>
                             </ul>
-                        </li> --}}
+                        </li>
 
                         <li class="sidebar-item {{ request()->is('Perhitungan*') ? 'active' : '' }}">
                             <a href="/Perhitungan" class='sidebar-link'>
@@ -233,14 +253,14 @@
                                     style="min-width: 11rem;">
                                     <li>
                                         <a class="dropdown-item" href="{{ url('Profile') }}">
-                                            <i class="bi bi-person-gear"></i>
+                                            <i class="bi bi-person-fill-gear"></i>
                                             Profile
                                         </a>
                                     </li>
 
                                     <li>
                                         <a class="dropdown-item" href="{{ url('Profile/ChangePassword') }}">
-                                            <i class="bi bi-person-gear"></i>
+                                            <i class="fa-solid fa-key"></i>
                                             Ganti Password
                                         </a>
                                     </li>
@@ -292,6 +312,8 @@
     <script src="https://kit.fontawesome.com/1610082ff9.js" crossorigin="anonymous"></script>
     <script src="{{ asset('mazer/assets/static/js/pages/horizontal-layout.js') }}"></script>
     <script src="{{ asset('mazer/assets/static/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('mazer/assets/extensions/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('mazer/assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
 
 
 

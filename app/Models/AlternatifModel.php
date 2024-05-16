@@ -8,6 +8,6 @@ class AlternatifModel extends Model
 {
     protected $table = 'alternatif';
     protected $primaryKey = 'id_alternatif';
-    protected $fillable = ['nama', 'notelp', 'divisi'];
+    protected $fillable = ['nama', 'notelp', 'divisi', 'periode'];
     public $timestamps = false;
 }

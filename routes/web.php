@@ -55,6 +55,7 @@ Route::get('/SubKriteria/destroy/{id_sub_kriteria}', [SubKriteriaController::cla
 /* Alternatif */
 Route::get('/Alternatif', [AlternatifController::class, 'index'])->name('Alternatif');
 Route::get('/Alternatif/tambah', [AlternatifController::class, 'tambah'])->name('alternatif.tambah');
+Route::get('/Alternatif/detail/{id_user}', [AlternatifController::class, 'detail'])->name('alternatif.detail');
 Route::get('/Alternatif/edit/{id_alternatif}', [AlternatifController::class, 'edit'])->name('alternatif.edit');
 Route::get('/Alternatif/destroy/{id_alternatif}', [AlternatifController::class, 'destroy'])->name('alternatif.destroy');
 Route::post('/Alternatif/simpan', [AlternatifController::class, 'simpan']);
@@ -71,6 +72,9 @@ Route::post('/Penilaian/edit', [PenilaianController::class, 'edit']);
 Route::get('/Perhitungan', [PerhitunganController::class, 'index'])->name('Perhitungan');
 Route::get('/Perhitungan/matrixkeputusan', [PerhitunganController::class, 'matrixkeputusan'])->name('perhitungan.matrixkeputusan');
 Route::get('/Perhitungan/normalisasi', [PerhitunganController::class, 'normalisasi'])->name('perhitungan.normalisasi');
+Route::get('/Perhitungan/normalisasibobot', [PerhitunganController::class, 'normalisasibobot'])->name('perhitungan.normalisasibobot');
+Route::get('/Perhitungan/nilaisr', [PerhitunganController::class, 'nilaisr'])->name('perhitungan.nilaisr');
+Route::get('/Perhitungan/nilaiq', [PerhitunganController::class, 'nilaiq'])->name('perhitungan.nilaiq');
 
 /* Hasil */
 Route::get('/Hasil', [HasilController::class, 'index'])->name('Hasil');

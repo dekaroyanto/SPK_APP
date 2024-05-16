@@ -11,6 +11,29 @@
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Hasil Akhir Perankingan</h6>
+
+            <form action="{{ route('Hasil') }}" method="GET">
+                <div class="form-group col-md-4 mt-3">
+                    <div style="display: flex; align-items: center;">
+                        <select class="form-control" id="divisiFilter" name="divisi">
+                            <option value="">Semua Divisi</option>
+                            @foreach ($divisions as $division)
+                                <option value="{{ $division }}" @if (request('divisi') == $division) selected @endif>
+                                    {{ $division }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div>Periode</div>
+                <div class="form-group col-md-4">
+                    <div style="display: flex; align-items: center;" class="gap-1">
+                        <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
+                            value="{{ request('periode') }}">
+                        <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                        <a href="{{ route('Hasil') }}" class="btn btn-danger ml-2">Reset</a>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="card-body">
@@ -21,6 +44,7 @@
                             <th>Nama</th>
                             <th>No Telepon</th>
                             <th>Divisi</th>
+                            <th>Periode</th>
                             <th width="15%">Ranking</th>
                         </tr>
                     </thead>
@@ -31,11 +55,12 @@
                         @foreach ($hasil as $keys)
                             <tr>
                                 {{-- <td>{{ $keys->nama }}</td> --}}
-                                <td class="text-left">{{ substr($keys->nama, 0, 2) }}****</td>
+                                <td class="text-center">{{ substr($keys->nama, 0, 2) }}****</td>
                                 <td class="text-center">
                                     0{{ substr($keys->notelp, 0, 1) }}******{{ substr($keys->notelp, -3) }}
                                 </td>
                                 <td>{{ $keys->divisi }}</td>
+                                <td>{{ $keys->periode }}</td>
                                 <td>{{ $no }}</td>
                             </tr>
                             @php

@@ -58,21 +58,21 @@
                 $x = ($nilai_max - $nilai) / ($nilai_max - $nilai_min);
             } else {
                 // Ubah alert menjadi SweetAlert2
-                echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+                echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'; // Tambahkan baris ini
                 echo '<script>
-                                                                    Swal.fire({
-                                                                     icon: "error",
-                                                                       title: "Lengkapi Data Terlebih Dahulu",
-                                                                        text: "Anda akan dialihkan ke halaman Penilaian",
-                                                                        showCancelButton: false,
-                                                                         confirmButtonColor: "#3085d6",
-                                                                         confirmButtonText: "OK"
-                                                                        }).then((result) => {
-                                                                        if (result.isConfirmed) {
-                                                                         window.location.href = "/Penilaian";
-                                                                          }
-                                                                         });
-                                                         </script>';
+                                                                                                                                                                Swal.fire({
+                                                                                                                                                                    icon: "error",
+                                                                                                                                                                    title: "Lengkapi Data Terlebih Dahulu",
+                                                                                                                                                                    text: "Anda akan dialihkan ke halaman Penilaian",
+                                                                                                                                                                    showCancelButton: false,
+                                                                                                                                                                    confirmButtonColor: "#3085d6",
+                                                                                                                                                                    confirmButtonText: "OK"
+                                                                                                                                                                }).then((result) => {
+                                                                                                                                                                    if (result.isConfirmed) {
+                                                                                                                                                                        window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                                                                                                                                                                    }
+                                                                                                                                                                });
+                                                                                                                                                            </script>';
             }
     
             $nilai_x[$id_alternatif][$id_kriteria] = $x;
@@ -184,70 +184,48 @@
     <div class="card shadow mb-4">
         <!-- /.card-header -->
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Normalisasi Matrix</h6>
-
-            <form action="{{ url('Perhitungan/normalisasi') }}" method="GET">
-                <div class="form-group col-md-4 mt-3">
-                    <div style="display: flex; align-items: center;">
-                        <select class="form-control" id="divisiFilter" name="divisi">
-                            <option value="">Semua Divisi</option>
-                            @foreach ($divisions as $division)
-                                <option value="{{ $division->divisi }}" @if (request('divisi') == $division->divisi) selected @endif>
-                                    {{ $division->divisi }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div>Periode</div>
-                <div class="form-group col-md-4">
-                    <div style="display: flex; align-items: center;" class="gap-1">
-
-                        <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
-                            value="{{ request('periode') }}">
-                        <button type="submit" class="btn btn-primary ml-2">Filter</button>
-                        <a href="{{ url('Perhitungan/normalisasi') }}" class="btn btn-danger ml-2">Reset</a>
-                    </div>
-                </div>
-            </form>
+            <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Nilai Q</h6>
         </div>
 
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped text-sm" id="table1">
                     <thead class="text-center">
-                        <tr align="center">
-                            <th width="5%" rowspan="2">No</th>
-                            <th width="15%">Nama</th>
+                        <tr>
+                            <th width="5%">No</th>
+                            <th class="text-center">Nama</th>
                             <th class="text-center">Divisi</th>
-                            <th class="text-center">Periode</th>
-                            <?php foreach ($kriterias as $kriteria) : ?>
-                            <th class="text-center" width="10%"><?= $kriteria->kode_kriteria ?></th>
-                            <?php endforeach ?>
+                            <th class="text-center">Nilai Qi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                    $no = 1;
-                    foreach ($alternatifs as $alternatif) : ?>
                         <tr>
-                            <td><?= $no ?></td>
-                            <td class="text-left">{{ substr($alternatif->nama, 0, 2) }}****</td>
-                            <td class="text-center"><?= $alternatif->divisi ?></td>
-                            <td class="text-center">{{ date('F Y', strtotime($alternatif->periode)) }}</td>
                             <?php
-                            foreach ($kriterias as $kriteria):
-                                $id_alternatif = $alternatif->id_alternatif;
-                                $id_kriteria = $kriteria->id_kriteria;
-                                echo '<td class="text-center">';
-                                echo $nilai_x[$id_alternatif][$id_kriteria];
-                                echo '</td>';
-                            endforeach;
-                            ?>
+						$no=1;
+						foreach ($alternatifs as $alternatif):
+						$id_alternatif = $alternatif->id_alternatif;
+						?>
+                        <tr>
+                            <td class="text-center"><?= $no ?></td>
+                            {{-- <td align="left"><?= $alternatif->nama ?></td> --}}
+                            <td class="text-center">{{ substr($alternatif->nama, 0, 2) }}****</td>
+                            <td class="text-center">{{ $alternatif->divisi }}</td>
+                            <td class="text-center">
+                                <?php
+                                echo $hasil = $nilai_q[$id_alternatif];
+                                ?>
+                            </td>
                         </tr>
                         <?php
-                        $no++;
-                    endforeach
-                    ?>
+						$no++;
+						$hasil_akhir = [
+							'id_alternatif' => $alternatif->id_alternatif,
+							'nilai' => $hasil
+						];
+						DB::table('hasil')->insert($hasil_akhir);
+						endforeach;
+					?>
+                        </tr>
                     </tbody>
                 </table>
             </div>

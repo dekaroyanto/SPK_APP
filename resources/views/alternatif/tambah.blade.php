@@ -26,29 +26,35 @@
                     <div class="form-group col-md-4">
                         <label for="jabatan" class="form-label">Nama</label>
                         <input autocomplete="off" type="text" name="nama" required
-                            class="form-control round form-control-lg" />
+                            class="form-control round form-control" />
                         {{-- <input class="form-control form-control-lg" type="text" placeholder="Large Input"> --}}
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="jabatan" class="form-label">No Telepon</label>
                         <input autocomplete="off" type="number" name="notelp" required
-                            class="form-control round form-control-lg" />
+                            class="form-control round form-control" />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="jabatan" class="form-label">Divisi</label>
-                        <select class="choices form-select" name="divisi" id="divisi">
+                        <select class=" form-select form-control" name="divisi" id="divisi">
                             <option value="MARKETING">MARKETING</option>
                             <option value="COLLECTOR">COLLECTOR</option>
                             <option value="ACCOUNTING">ACCOUNTING</option>
                         </select>
                     </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="periode" class="form-label">Periode</label>
+                        <input autocomplete="off" type="month" name="periode" required
+                            class="form-control round form-control" />
+                    </div>
                 </div>
             </div>
             <div class="card-footer col-sm-12 d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary me-1"><i class="bi bi-floppy-fill"></i> Simpan</button>
-                <button type="reset" class="btn btn-danger"><i class="bi bi-arrow-repeat"></i> Reset</button>
+                <button type="reset" class="btn btn-danger"><i class="bi bi-arrow-repeat"></i> Urungkan</button>
             </div>
         </form>
     </div>

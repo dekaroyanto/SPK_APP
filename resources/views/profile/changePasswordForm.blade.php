@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-user"></i> Ubah Password</h1>
+        <h1 class="h3 mb-0 text-gray-800"><i class="fa-solid fa-key"></i> Ganti Password</h1>
     </div>
 
     @if (session('message'))
@@ -17,6 +17,12 @@
             <div class="card-body">
                 <div class="row">
                     <input type="hidden" name="id_user" value="{{ $profile->id_user }}">
+
+                    <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Old Password</label>
+                        <input autocomplete="off" type="password" name="old_password" required class="form-control">
+                    </div>
+
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">New Password</label>
                         <input autocomplete="off" type="password" name="password" required class="form-control">

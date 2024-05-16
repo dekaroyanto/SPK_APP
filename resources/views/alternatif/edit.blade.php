@@ -60,7 +60,7 @@
             </div>
             <div class="card-footer col-sm-12 d-flex justify-content-end">
                 <button type="submit" class="btn btn-primary me-1"><i class="bi bi-floppy-fill"></i> Simpan</button>
-                <button type="reset" class="btn btn-danger"><i class="bi bi-arrow-repeat"></i> Reset</button>
+                <button type="reset" class="btn btn-danger"><i class="bi bi-arrow-repeat"></i> Urungkan</button>
             </div>
         </form>
 

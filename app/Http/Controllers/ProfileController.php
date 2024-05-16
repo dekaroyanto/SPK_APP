@@ -50,16 +50,23 @@ class ProfileController extends Controller
     public function ChangePassword(Request $request, $id_user)
     {
         $this->validate($request, [
+            'old_password' => 'required',
             'password' => 'required',
         ]);
+
+        $user = UserModel::findOrFail($id_user);
+
+        // Periksa apakah password lama cocok
+        if (md5($request->input('old_password')) !== $user->password) {
+            return redirect()->back()->with('error', 'Password lama tidak cocok.');
+        }
 
         $data = [
             'password' => md5($request->input('password'))
         ];
 
-        $user = UserModel::findOrFail($id_user);
         $user->update($data);
 
-        return redirect('Profile')->with('success', 'Data profile berhasil diupdate!');
+        return redirect('Profile/ChangePassword')->with('success', 'Data profile berhasil diupdate!');
     }
 }
