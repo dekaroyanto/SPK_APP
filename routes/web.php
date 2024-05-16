@@ -81,6 +81,8 @@ Route::get('/Hasil', [HasilController::class, 'index'])->name('Hasil');
 
 /* Laporan */
 Route::get('/Laporan', [HasilController::class, 'Laporan'])->name('Laporan');
+Route::get('/cetak-laporan', [HasilController::class, 'cetakLaporan'])->name('cetakLaporan');
+
 
 /* User */
 Route::get('/User', [UserController::class, 'index'])->name('User');

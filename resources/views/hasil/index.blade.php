@@ -4,7 +4,9 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Data Hasil Akhir</h1>
 
-        <a href="{{ url('Laporan') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a>
+        {{-- <a href="{{ url('Laporan') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a> --}}
+        <a href="{{ route('cetakLaporan', ['divisi' => request('divisi'), 'periode' => request('periode')]) }}"
+            class="btn btn-success"><i class="fa fa-print"></i> Cetak Laporan</a>
     </div>
 
     <div class="card shadow mb-4">

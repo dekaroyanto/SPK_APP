@@ -22,7 +22,10 @@
         <table border="1" width="100%">
             <thead>
                 <tr align="center">
-                    <th>Alternatif</th>
+                    <th>Nama</th>
+                    <th>Notelp</th>
+                    <th>Divisi</th>
+                    <th>Periode</th>
                     <th>Nilai Qi</th>
                     <th width="15%">Ranking</th>
                 </tr>
@@ -34,6 +37,9 @@
                 @foreach ($hasil as $keys)
                     <tr align="center">
                         <td align="left">{{ $keys->nama }}</td>
+                        <td align="left">{{ $keys->notelp }}</td>
+                        <td align="left">{{ $keys->divisi }}</td>
+                        <td align="left">{{ $keys->periode }}</td>
                         <td>{{ $keys->nilai }}</td>
                         <td>{{ $no }}</td>
                     </tr>

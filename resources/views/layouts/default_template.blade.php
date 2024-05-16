@@ -165,12 +165,12 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item {{ request()->is('Perhitungan*') ? 'active' : '' }}">
+                        {{-- <li class="sidebar-item {{ request()->is('Perhitungan*') ? 'active' : '' }}">
                             <a href="/Perhitungan" class='sidebar-link'>
                                 <i class="bi bi-calculator"></i>
                                 <span>Perhitungan</span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="sidebar-item {{ request()->is('Hasil*') ? 'active' : '' }}">
                             <a href="/Hasil" class='sidebar-link'>

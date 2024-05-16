@@ -60,7 +60,7 @@
                                 <td class="text-center">{{ date('F Y', strtotime($keys->periode)) }}</td>
                                 <?php $cek_tombol = \App\Models\PenilaianModel::untuk_tombol($keys->id_alternatif); ?>
 
-                                <td>
+                                <td class="text-center">
                                     @if ($cek_tombol == 0)
                                         <a data-bs-toggle="modal" href="#set{{ $keys->id_alternatif }}"
                                             class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Input</a>
