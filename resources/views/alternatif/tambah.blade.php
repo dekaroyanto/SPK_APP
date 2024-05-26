@@ -24,19 +24,29 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-4">
-                        <label for="jabatan" class="form-label">Nama</label>
-                        <input autocomplete="off" type="text" name="nama" required
-                            class="form-control round form-control" />
+                        <label for="nama" class="form-label">Nama</label>
+                        <input value="{{ old('nama') }}" autocomplete="off" type="text" name="nama" required
+                            class="form-control round form-control @error('nama') is-invalid @enderror" />
+                        @error('nama')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="jabatan" class="form-label">No Telepon</label>
-                        <input autocomplete="off" type="number" name="notelp" required
-                            class="form-control round form-control" />
+                        <label for="nama" class="form-label">No Telepon</label>
+                        <input value="{{ old('notelp') }}" autocomplete="off" type="number" name="notelp" required
+                            class="form-control round form-control @error('notelp') is-invalid @enderror" />
+                        @error('notelp')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-4">
-                        <label for="jabatan" class="form-label">Divisi</label>
+                        <label for="divisi" class="form-label">Divisi</label>
                         <select class=" form-select form-control" name="divisi" id="divisi">
                             <option value="MARKETING">MARKETING</option>
                             <option value="COLLECTOR">COLLECTOR</option>
@@ -46,7 +56,7 @@
 
                     <div class="form-group col-md-4">
                         <label for="periode" class="form-label">Periode</label>
-                        <input autocomplete="off" type="month" name="periode" required
+                        <input value="{{ old('periode') }}" autocomplete="off" type="month" name="periode" required
                             class="form-control round form-control" />
                     </div>
                 </div>

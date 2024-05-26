@@ -62,7 +62,7 @@
                                     0{{ substr($keys->notelp, 0, 1) }}******{{ substr($keys->notelp, -3) }}
                                 </td>
                                 <td>{{ $keys->divisi }}</td>
-                                <td>{{ $keys->periode }}</td>
+                                <td>{{ date('F Y', strtotime($keys->periode)) }}</td>
                                 <td>{{ $no }}</td>
                             </tr>
                             @php

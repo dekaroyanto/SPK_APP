@@ -261,7 +261,7 @@
                                     <li>
                                         <a class="dropdown-item" href="{{ url('Profile/ChangePassword') }}">
                                             <i class="fa-solid fa-key"></i>
-                                            Ganti Password
+                                            Ubah Kata Sandi
                                         </a>
                                     </li>
                                     <hr class="dropdown-divider">

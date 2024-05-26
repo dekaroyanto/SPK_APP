@@ -47,19 +47,19 @@
                 // Ubah alert menjadi SweetAlert2
                 echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
                 echo '<script>
-                                                                                            Swal.fire({
-                                                                                            icon: "error",
-                                                                                            title: "Lengkapi Data Terlebih Dahulu",
-                                                                                            text: "Anda akan dialihkan ke halaman Penilaian",
-                                                                                            showCancelButton: false,
-                                                                                            confirmButtonColor: "#3085d6",
-                                                                                            confirmButtonText: "OK"
-                                                                                            }).then((result) => {
-                                                                                            if (result.isConfirmed) {
-                                                                                            window.location.href = "/Penilaian"; // Redirect to Penilaian page
-                                                                                            }
-                                                                                            });
-                                                                                           </script>';
+                                                                                                Swal.fire({
+                                                                                                icon: "error",
+                                                                                                title: "Lengkapi Data Terlebih Dahulu",
+                                                                                                text: "Anda akan dialihkan ke halaman Penilaian",
+                                                                                                showCancelButton: false,
+                                                                                                confirmButtonColor: "#3085d6",
+                                                                                                confirmButtonText: "OK"
+                                                                                                }).then((result) => {
+                                                                                                if (result.isConfirmed) {
+                                                                                                window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                                                                                                }
+                                                                                                });
+                                                                                               </script>';
             }
     
             $nilai_x[$id_alternatif][$id_kriteria] = $x;

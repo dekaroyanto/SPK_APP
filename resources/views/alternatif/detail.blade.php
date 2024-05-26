@@ -31,8 +31,8 @@
                         <td>{{ $alternatif->divisi }}</td>
                     </tr>
                     <tr>
-                        <th class="">Tanggal</th>
-                        <td>{{ $alternatif->tanggal }}</td>
+                        <th class="">Periode</th>
+                        <td>{{ date('F Y', strtotime($alternatif->periode)) }}</td>
                     </tr>
                     {{-- <tr>
 					<th class="">Level</th>

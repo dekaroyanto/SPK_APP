@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PerhitunganModel;
-use App\Models\AlternatifModel;
 use App\Models\KriteriaModel;
+use App\Models\AlternatifModel;
+use App\Models\PerhitunganModel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class PerhitunganController extends Controller
 {
@@ -62,6 +63,14 @@ class PerhitunganController extends Controller
         if ($request->has('periode') && $request->periode != "") {
             $periode = $request->periode;
             $query->where('periode', $periode);
+            // Check if any data matches the criteria
+            $count = $query->count();
+            if ($count == 0) {
+                // No data found for the given criteria, flash an error message
+                Session::flash('error', 'Tidak ada data yang sesuai dengan periode yang dipilih.');
+                // Redirect back to the same page
+                return redirect()->back();
+            }
         }
 
         $data['alternatifs'] = $query->get();
@@ -88,9 +97,22 @@ class PerhitunganController extends Controller
             $query->where('divisi', $divisi);
         }
 
+        // if ($request->has('periode') && $request->periode != "") {
+        //     $periode = $request->periode;
+        //     $query->where('periode', $periode);
+        // }
+
         if ($request->has('periode') && $request->periode != "") {
             $periode = $request->periode;
             $query->where('periode', $periode);
+            // Check if any data matches the criteria
+            $count = $query->count();
+            if ($count == 0) {
+                // No data found for the given criteria, flash an error message
+                Session::flash('error', 'Tidak ada data yang sesuai dengan periode yang dipilih.');
+                // Redirect back to the same page
+                return redirect()->back();
+            }
         }
 
         $data['alternatifs'] = $query->get();
@@ -117,9 +139,22 @@ class PerhitunganController extends Controller
             $query->where('divisi', $divisi);
         }
 
+        // if ($request->has('periode') && $request->periode != "") {
+        //     $periode = $request->periode;
+        //     $query->where('periode', $periode);
+        // }
+
         if ($request->has('periode') && $request->periode != "") {
             $periode = $request->periode;
             $query->where('periode', $periode);
+            // Check if any data matches the criteria
+            $count = $query->count();
+            if ($count == 0) {
+                // No data found for the given criteria, flash an error message
+                Session::flash('error', 'Tidak ada data yang sesuai dengan periode yang dipilih.');
+                // Redirect back to the same page
+                return redirect()->back();
+            }
         }
 
         $data['alternatifs'] = $query->get();
@@ -146,9 +181,22 @@ class PerhitunganController extends Controller
             $query->where('divisi', $divisi);
         }
 
+        // if ($request->has('periode') && $request->periode != "") {
+        //     $periode = $request->periode;
+        //     $query->where('periode', $periode);
+        // }
+
         if ($request->has('periode') && $request->periode != "") {
             $periode = $request->periode;
             $query->where('periode', $periode);
+            // Check if any data matches the criteria
+            $count = $query->count();
+            if ($count == 0) {
+                // No data found for the given criteria, flash an error message
+                Session::flash('error', 'Tidak ada data yang sesuai dengan periode yang dipilih.');
+                // Redirect back to the same page
+                return redirect()->back();
+            }
         }
 
         $data['alternatifs'] = $query->get();
@@ -175,9 +223,22 @@ class PerhitunganController extends Controller
             $query->where('divisi', $divisi);
         }
 
+        // if ($request->has('periode') && $request->periode != "") {
+        //     $periode = $request->periode;
+        //     $query->where('periode', $periode);
+        // }
+
         if ($request->has('periode') && $request->periode != "") {
             $periode = $request->periode;
             $query->where('periode', $periode);
+            // Check if any data matches the criteria
+            $count = $query->count();
+            if ($count == 0) {
+                // No data found for the given criteria, flash an error message
+                Session::flash('error', 'Tidak ada data yang sesuai dengan periode yang dipilih.');
+                // Redirect back to the same page
+                return redirect()->back();
+            }
         }
 
         $data['alternatifs'] = $query->get();

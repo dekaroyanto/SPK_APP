@@ -56,13 +56,14 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped text-sm" id="table1">
-                    <thead class="text-center">
+                <table class="table table-striped text-sm">
+                    <thead>
                         <tr>
                             <th>No</th>
                             <th>Nama Alternatif</th>
                             <th>No Telp</th>
                             <th>Divisi</th>
+                            <th>Periode</th>
                             <th width="15%">Ranking</th>
                         </tr>
                     </thead>
@@ -74,10 +75,11 @@
                             <tr>
                                 <td>{{ $no }}</td>
                                 <td class="text-left">{{ substr($keys->nama, 0, 2) }}****</td>
-                                <td class="text-center">
+                                <td>
                                     0{{ substr($keys->notelp, 0, 1) }}******{{ substr($keys->notelp, -3) }}
                                 </td>
                                 <td>{{ $keys->divisi }}</td>
+                                <td>{{ date('F Y', strtotime($keys->periode)) }}</td>
                                 <td>{{ $no }}</td>
                             </tr>
                             @php

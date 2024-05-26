@@ -60,19 +60,19 @@
                 // Ubah alert menjadi SweetAlert2
                 echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'; // Tambahkan baris ini
                 echo '<script>
-                                                                                                                                                                                                                                Swal.fire({
-                                                                                                                                                                                                                                    icon: "error",
-                                                                                                                                                                                                                                    title: "Lengkapi Data Terlebih Dahulu",
-                                                                                                                                                                                                                                    text: "Anda akan dialihkan ke halaman Penilaian",
-                                                                                                                                                                                                                                    showCancelButton: false,
-                                                                                                                                                                                                                                    confirmButtonColor: "#3085d6",
-                                                                                                                                                                                                                                    confirmButtonText: "OK"
-                                                                                                                                                                                                                                }).then((result) => {
-                                                                                                                                                                                                                                    if (result.isConfirmed) {
-                                                                                                                                                                                                                                        window.location.href = "/Penilaian"; // Redirect to Penilaian page
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                });
-                                                                                                                                                                                                                            </script>';
+                                                                                                                                                                                                                                            Swal.fire({
+                                                                                                                                                                                                                                                icon: "error",
+                                                                                                                                                                                                                                                title: "Lengkapi Data Terlebih Dahulu",
+                                                                                                                                                                                                                                                text: "Anda akan dialihkan ke halaman Penilaian",
+                                                                                                                                                                                                                                                showCancelButton: false,
+                                                                                                                                                                                                                                                confirmButtonColor: "#3085d6",
+                                                                                                                                                                                                                                                confirmButtonText: "OK"
+                                                                                                                                                                                                                                            }).then((result) => {
+                                                                                                                                                                                                                                                if (result.isConfirmed) {
+                                                                                                                                                                                                                                                    window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                        </script>';
             }
     
             $nilai_x[$id_alternatif][$id_kriteria] = $x;
@@ -156,31 +156,6 @@
         <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-calculator"></i> Data Perhitungan</h1>
     </div>
 
-    {{-- <div class="card shadow mb-4">
-        <div class="w3-bar">
-            <a class="w3-bar-item disabled">Menu</a>
-            <a href="{{ url('Perhitungan') }}" class="w3-bar-item w3-button w3-hide-small">Bobot Kriteria</a>
-            <a href="{{ url('Perhitungan/matrixkeputusan') }}" class="w3-bar-item w3-button w3-hide-small">Matriks Keputusan
-                (X)</a>
-            <a href="{{ url('Perhitungan/normalisasi') }}" class="w3-bar-item w3-button w3-hide-small">Normalisasi Matrix
-                (X)</a>
-            <a href="{{ url('Perhitungan/normalisasibobot') }}" class="w3-bar-item w3-button w3-hide-small">Normalisasi
-                Bobot (R)</a>
-            <a href="#" class="w3-bar-item w3-button w3-hide-small">Nilai R</a>
-            <a href="#" class="w3-bar-item w3-button w3-hide-small">Nilai s</a>
-            <a href="#" class="w3-bar-item w3-button w3-hide-small">Nilai S dan R</a>
-            <a href="#" class="w3-bar-item w3-button w3-hide-small">Nilai Qi</a>
-            <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-                onclick="myFunction()">&#9776;</a>
-        </div>
-
-        <div id="demo" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium">
-            <a href="{{ url('Perhitungan') }}" class="w3-bar-item w3-button">Bobot Kriteria</a>
-            <a href="{{ url('Perhitungan/matrixkeputusan') }}" class="w3-bar-item w3-button">Matriks Keputusan (X)</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-    </div> --}}
-
     <div class="card shadow mb-4">
         <!-- /.card-header -->
         <div class="card-header py-3">
@@ -217,6 +192,7 @@
                         <tr align="center">
                             <th width="5%" rowspan="2">No</th>
                             <th width="10%">Nama</th>
+                            <th>No Telepon</th>
                             <th class="text-center">Divisi</th>
                             <th class="text-center">Periode</th>
                             <?php foreach ($kriterias as $kriteria): ?>
@@ -231,6 +207,7 @@
                         <tr>
                             <td><?= $no ?></td>
                             <td class="text-left">{{ substr($alternatif->nama, 0, 2) }}****</td>
+                            <td>0{{ substr($alternatif->notelp, 0, 1) }}******{{ substr($alternatif->notelp, -3) }}</td>
                             <td class="text-center"><?= $alternatif->divisi ?></td>
                             <td class="text-center">{{ date('F Y', strtotime($alternatif->periode)) }}</td>
                             <?php

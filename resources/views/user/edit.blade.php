@@ -47,7 +47,7 @@
             </div>
             <div class="card-footer col-sm-12 d-flex justify-content-end">
                 <button type="submit" class="btn btn-success me-1"><i class="fa fa-save"></i> Update</button>
-                <button type="reset" class="btn btn-danger"><i class="fa fa-sync-alt"></i> Reset</button>
+                <button type="reset" class="btn btn-danger"><i class="fa fa-sync-alt"></i> Urungkan</button>
             </div>
         </form>
     </div>

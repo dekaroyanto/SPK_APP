@@ -1,23 +1,5 @@
 @extends('layouts.default_template')
 
-@section('css')
-    {{-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> --}}
-    {{-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> --}}
-@endsection
-
-@section('jsbro')
-    <script>
-        function myFunction() {
-            var x = document.getElementById("demo");
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-            } else {
-                x.className = x.className.replace(" w3-show", "");
-            }
-        }
-    </script>
-@endsection
-
 @section('content')
     <?php
     \App\Models\PerhitunganModel::hapus_hasil();
@@ -60,19 +42,19 @@
                 // Ubah alert menjadi SweetAlert2
                 echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>'; // Tambahkan baris ini
                 echo '<script>
-                                                                                                                                                                Swal.fire({
-                                                                                                                                                                    icon: "error",
-                                                                                                                                                                    title: "Lengkapi Data Terlebih Dahulu",
-                                                                                                                                                                    text: "Anda akan dialihkan ke halaman Penilaian",
-                                                                                                                                                                    showCancelButton: false,
-                                                                                                                                                                    confirmButtonColor: "#3085d6",
-                                                                                                                                                                    confirmButtonText: "OK"
-                                                                                                                                                                }).then((result) => {
-                                                                                                                                                                    if (result.isConfirmed) {
-                                                                                                                                                                        window.location.href = "/Penilaian"; // Redirect to Penilaian page
-                                                                                                                                                                    }
-                                                                                                                                                                });
-                                                                                                                                                            </script>';
+                                                                                                                                                                                                                            Swal.fire({
+                                                                                                                                                                                                                                icon: "error",
+                                                                                                                                                                                                                                title: "Lengkapi Data Terlebih Dahulu",
+                                                                                                                                                                                                                                text: "Anda akan dialihkan ke halaman Penilaian",
+                                                                                                                                                                                                                                showCancelButton: false,
+                                                                                                                                                                                                                                confirmButtonColor: "#3085d6",
+                                                                                                                                                                                                                                confirmButtonText: "OK"
+                                                                                                                                                                                                                            }).then((result) => {
+                                                                                                                                                                                                                                if (result.isConfirmed) {
+                                                                                                                                                                                                                                    window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                        </script>';
             }
     
             $nilai_x[$id_alternatif][$id_kriteria] = $x;
@@ -185,6 +167,29 @@
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Nilai Q</h6>
+
+            <form action="{{ url('Perhitungan/nilaiq') }}" method="GET">
+                <div class="form-group col-md-4 mt-3">
+                    <div style="display: flex; align-items: center;">
+                        <select class="form-control" id="divisiFilter" name="divisi">
+                            <option value="">Semua Divisi</option>
+                            @foreach ($divisions as $division)
+                                <option value="{{ $division->divisi }}" @if (request('divisi') == $division->divisi) selected @endif>
+                                    {{ $division->divisi }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div>Periode</div>
+                <div class="form-group col-md-4">
+                    <div style="display: flex; align-items: center;" class="gap-1">
+                        <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
+                            value="{{ request('periode') }}">
+                        <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                        <a href="{{ url('Perhitungan/matrixkeputusan') }}" class="btn btn-danger ml-2">Reset</a>
+                    </div>
+                </div>
+            </form>
         </div>
 
         <div class="card-body">
@@ -193,8 +198,10 @@
                     <thead class="text-center">
                         <tr>
                             <th width="5%">No</th>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Divisi</th>
+                            <th>Nama</th>
+                            <th>No Telepon</th>
+                            <th>Divisi</th>
+                            <th>Periode</th>
                             <th class="text-center">Nilai Qi</th>
                         </tr>
                     </thead>
@@ -206,10 +213,12 @@
 						$id_alternatif = $alternatif->id_alternatif;
 						?>
                         <tr>
-                            <td class="text-center"><?= $no ?></td>
+                            <td><?= $no ?></td>
                             {{-- <td align="left"><?= $alternatif->nama ?></td> --}}
-                            <td class="text-center">{{ substr($alternatif->nama, 0, 2) }}****</td>
-                            <td class="text-center">{{ $alternatif->divisi }}</td>
+                            <td>{{ substr($alternatif->nama, 0, 2) }}****</td>
+                            <td>0{{ substr($alternatif->notelp, 0, 1) }}******{{ substr($alternatif->notelp, -3) }}</td>
+                            <td>{{ $alternatif->divisi }}</td>
+                            <td>{{ date('F Y', strtotime($alternatif->periode)) }}</td>
                             <td class="text-center">
                                 <?php
                                 echo $hasil = $nilai_q[$id_alternatif];

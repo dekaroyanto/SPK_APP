@@ -24,13 +24,23 @@
                     <div class="form-group col-md-12">
                         <label class="font-weight-bold">Nama</label>
                         <input autocomplete="off" type="text" name="nama" value="{{ $alternatif->nama }}" required
-                            class="form-control" />
+                            class="form-control  @error('nama') is-invalid @enderror" />
+                        @error('nama')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-12">
                         <label class="font-weight-bold">No Telepon</label>
                         <input autocomplete="off" type="number" name="notelp" value="0{{ $alternatif->notelp }}" required
-                            class="form-control" />
+                            class="form-control  @error('notelp') is-invalid @enderror" />
+                        @error('notelp')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-12">
@@ -55,6 +65,12 @@
                                 <option value="COLLECTOR">COLLECTOR</option>
                             @endif
                         </select>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label class="font-weight-bold">Periode</label>
+                        <input autocomplete="off" type="month" name="periode" value="{{ $alternatif->periode }}" required
+                            class="form-control" />
                     </div>
                 </div>
             </div>

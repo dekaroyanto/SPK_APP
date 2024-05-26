@@ -57,10 +57,15 @@ class AlternatifController extends Controller
         }
 
         $this->validate($request, [
-            'nama' => 'required',
-            'notelp' => 'required',
+            'nama' => 'required|unique:alternatif',
+            'notelp' => 'required|unique:alternatif',
             'divisi' => 'required',
             'periode' => 'required',
+        ], [
+            'nama.unique' => 'Nama sudah terdaftar',
+            'nama.required' => 'Nama harus terisi',
+            'notelp.unique' => 'No telepon sudah terdaftar',
+            'notelp.required' => 'No telepon harus terisi',
         ]);
 
         $data = [
@@ -74,9 +79,10 @@ class AlternatifController extends Controller
 
         if ($result) {
             return redirect('Alternatif')->with('success', 'Data berhasil disimpan!');
-        } else {
-            return redirect('Alternatif/tambah')->with('error', 'Data gagal disimpan!');
         }
+        // else {
+        //     return redirect('Alternatif/tambah')->with('error', 'Data gagal disimpan!');
+        // }
     }
 
     public function detail($id_alternatif)
@@ -116,10 +122,15 @@ class AlternatifController extends Controller
         }
 
         $this->validate($request, [
-            'nama' => 'required',
-            'notelp' => 'required',
+            'nama' => 'required|unique:alternatif,nama,' . $id_alternatif . ',id_alternatif',
+            'notelp' => 'required|unique:alternatif,notelp,' . $id_alternatif . ',id_alternatif',
             'divisi' => 'required',
             'periode' => 'required',
+        ], [
+            'nama.unique' => 'Nama sudah terdaftar',
+            'nama.required' => 'Nama harus terisi',
+            'notelp.unique' => 'No telepon sudah terdaftar',
+            'notelp.required' => 'No telepon harus terisi',
         ]);
 
         $data = [

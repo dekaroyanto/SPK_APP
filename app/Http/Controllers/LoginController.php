@@ -58,7 +58,7 @@ class LoginController extends Controller
             $data['page'] = "Dashboard";
             $countKriteria = KriteriaModel::count();
             $countAlternatif = AlternatifModel::count();
-            $hasil = PerhitunganModel::get_hasil();
+            $hasil = PerhitunganModel::get_hasil()->take(5);
             return view('dashboard', ['data' => $data, 'countKriteria' => $countKriteria, 'countAlternatif' => $countAlternatif, 'hasil' => $hasil]);
         } else {
             return redirect()->route('login');
