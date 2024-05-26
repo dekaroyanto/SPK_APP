@@ -27,7 +27,6 @@
                         <label for="jabatan" class="form-label">Nama</label>
                         <input autocomplete="off" type="text" name="nama" required
                             class="form-control round form-control" />
-                        {{-- <input class="form-control form-control-lg" type="text" placeholder="Large Input"> --}}
                     </div>
 
                     <div class="form-group col-md-4">

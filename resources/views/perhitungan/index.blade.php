@@ -47,19 +47,19 @@
                 // Ubah alert menjadi SweetAlert2
                 echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
                 echo '<script>
-                                                                        Swal.fire({
-                                                                        icon: "error",
-                                                                        title: "Lengkapi Data Terlebih Dahulu",
-                                                                        text: "Anda akan dialihkan ke halaman Penilaian",
-                                                                        showCancelButton: false,
-                                                                        confirmButtonColor: "#3085d6",
-                                                                        confirmButtonText: "OK"
-                                                                        }).then((result) => {
-                                                                        if (result.isConfirmed) {
-                                                                        window.location.href = "/Penilaian"; // Redirect to Penilaian page
-                                                                        }
-                                                                        });
-                                                                       </script>';
+                                                                                            Swal.fire({
+                                                                                            icon: "error",
+                                                                                            title: "Lengkapi Data Terlebih Dahulu",
+                                                                                            text: "Anda akan dialihkan ke halaman Penilaian",
+                                                                                            showCancelButton: false,
+                                                                                            confirmButtonColor: "#3085d6",
+                                                                                            confirmButtonText: "OK"
+                                                                                            }).then((result) => {
+                                                                                            if (result.isConfirmed) {
+                                                                                            window.location.href = "/Penilaian"; // Redirect to Penilaian page
+                                                                                            }
+                                                                                            });
+                                                                                           </script>';
             }
     
             $nilai_x[$id_alternatif][$id_kriteria] = $x;
@@ -175,7 +175,7 @@
         </div>
 
         <div class="card-body">
-            <div class="alert alert-info">
+            <div class="alert alert-primary">
                 Nilai bobot kriteria didapatkan dengan menggunakan metode ROC.
             </div>
             <div class="table-responsive">
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold "><i class="fa fa-table"></i> Matriks Keputusan (X)</h6>
@@ -278,7 +278,7 @@
     </div>
 
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold "><i class="fa fa-table"></i> Normalisasi Matrix (X)</h6>
@@ -324,7 +324,7 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-warning"><i class="fa fa-table"></i> Normalisasi Bobot (R)</h6>
@@ -370,7 +370,7 @@
     </div>
 
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold "><i class="fa fa-table"></i> Nilai R</h6>
@@ -409,7 +409,7 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold "><i class="fa fa-table"></i> Nilai S</h6>
@@ -448,7 +448,7 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold "><i class="fa fa-table"></i> Nilai S dan R</h6>
@@ -478,7 +478,7 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-4 d-none">
         <!-- /.card-header -->
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold "><i class="fa fa-table"></i> Nilai Qi</h6>

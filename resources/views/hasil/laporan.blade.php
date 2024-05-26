@@ -39,7 +39,7 @@
                         <td align="left">{{ $keys->nama }}</td>
                         <td align="left">{{ $keys->notelp }}</td>
                         <td align="left">{{ $keys->divisi }}</td>
-                        <td align="left">{{ $keys->periode }}</td>
+                        <td align="left">{{ date('F Y', strtotime($keys->periode)) }}</td>
                         <td>{{ $keys->nilai }}</td>
                         <td>{{ $no }}</td>
                     </tr>
