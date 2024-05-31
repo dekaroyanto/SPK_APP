@@ -46,6 +46,22 @@
                     </div>
 
                     <div class="form-group col-md-4">
+                        <label for="nama" class="form-label">Periode</label>
+                        <select name="id_periode" id="id_periode">
+                            @foreach ($periodes as $periode)
+                                <?php
+                                
+                                $bulan = date('F', strtotime($periode->tanggal)); // Ambil nama bulan
+                                $tahun = date('Y', strtotime($periode->tanggal)); // Ambil tahun
+                                ?>
+                                <option value="{{ $periode->id }}">{{ $bulan }} {{ $tahun }} -
+                                    {{ $periode->divisi }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-4">
                         <label for="divisi" class="form-label">Divisi</label>
                         <select class=" form-select form-control" name="divisi" id="divisi">
                             <option value="MARKETING">MARKETING</option>

@@ -36,6 +36,35 @@ class AlternatifController extends Controller
         return view('alternatif.index', $data);
     }
 
+    public function updateDiterima(Request $request)
+    {
+        $id_user_level = session('log.id_user_level');
+
+        if ($id_user_level != 1) {
+            return redirect()->route('login')->withErrors(['error' => 'Anda tidak berhak mengakses halaman ini. Silahkan login.']);
+        }
+
+        $divisi = $request->input('divisi');
+        $periode = $request->input('periode');
+        $diterima = $request->input('diterima');
+
+        $alternatifs = AlternatifModel::where('divisi', $divisi)
+            ->where('periode', $periode)
+            ->get();
+
+        // Cek apakah ada data yang memenuhi kriteria
+        if ($alternatifs->isEmpty()) {
+            return redirect()->route('Alternatif')->withErrors('Tidak ada data yang memenuhi kriteria untuk diperbarui.');
+        }
+
+        foreach ($alternatifs as $alternatif) {
+            $alternatif->diterima = $diterima;
+            $alternatif->save();
+        }
+
+        return redirect()->route('Alternatif')->with('success', 'Jumlah Diterima berhasil diupdate!');
+    }
+
     public function tambah()
     {
         $id_user_level = session('log.id_user_level');

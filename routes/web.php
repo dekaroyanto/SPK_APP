@@ -19,6 +19,7 @@ use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\HasilController;
+use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use App\Models\PerhitunganModel;
@@ -36,6 +37,9 @@ Route::get('/Logout', [LoginController::class, 'Logout'])->name('logout');
 
 /* Dashboard */
 Route::get('/Dashboard', [LoginController::class, 'Dashboard'])->name('dashboard');
+
+//Periode
+Route::get('/Periode', [PeriodeController::class, 'index'])->name('Periode');
 
 /* Kriteria */
 Route::get('/Kriteria', [KriteriaController::class, 'index'])->name('Kriteria');
@@ -61,6 +65,8 @@ Route::get('/Alternatif/destroy/{id_alternatif}', [AlternatifController::class, 
 Route::post('/Alternatif/simpan', [AlternatifController::class, 'simpan']);
 Route::post('/Alternatif/update/{id_alternatif}', [AlternatifController::class, 'update'])->name('alternatif.update');
 Route::get('/Alternatif/destroy-all', [AlternatifController::class, 'destroyAll'])->name('alternatif.destroy-all');
+Route::post('Alternatif/update-diterima', [AlternatifController::class, 'updateDiterima'])->name('alternatif.update-diterima');
+
 
 
 /* Penilaian */

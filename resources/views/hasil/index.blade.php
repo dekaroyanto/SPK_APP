@@ -3,8 +3,6 @@
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800"><i class="fas fa-fw fa-chart-area"></i> Data Hasil Akhir</h1>
-
-        {{-- <a href="{{ url('Laporan') }}" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak Data </a> --}}
         <a href="{{ route('cetakLaporan', ['divisi' => request('divisi'), 'periode' => request('periode')]) }}"
             class="btn btn-success"><i class="fa fa-print"></i> Cetak Laporan</a>
     </div>
@@ -48,6 +46,8 @@
                             <th>Divisi</th>
                             <th>Periode</th>
                             <th width="15%">Ranking</th>
+                            <th>Jumlah Diterima</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,6 +64,8 @@
                                 <td>{{ $keys->divisi }}</td>
                                 <td>{{ date('F Y', strtotime($keys->periode)) }}</td>
                                 <td>{{ $no }}</td>
+                                <td>{{ $keys->diterima }}</td>
+                                <td>{{ $no <= $keys->diterima ? 'LULUS' : 'GAGAL' }}</td>
                             </tr>
                             @php
                                 $no++;

@@ -93,6 +93,13 @@
                             </a>
                         </li>
 
+                        <li class="sidebar-item {{ request()->is('Periode*') ? 'active' : '' }}">
+                            <a href="/Periode" class='sidebar-link'>
+                                <i class="fa-regular fa-calendar-days"></i>
+                                <span>Periode</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item {{ request()->is('Alternatif*') ? 'active' : '' }}">
                             <a href="/Alternatif" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
