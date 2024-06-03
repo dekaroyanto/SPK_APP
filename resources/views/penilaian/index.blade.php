@@ -12,6 +12,42 @@
             <h6 class="m-0 font-weight-bold"><i class="fa fa-table"></i> Daftar Data Penilaian</h6>
 
             <form action="{{ route('Penilaian') }}" method="GET">
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <div class="form-group">
+                            <select class="form-control" id="divisiFilter" name="divisi">
+                                <option value="">Semua Divisi</option>
+                                @foreach ($divisions as $division)
+                                    <option value="{{ $division->divisi }}"
+                                        @if (request('divisi') == $division->divisi) selected @endif>
+                                        {{ $division->divisi }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="form-group">
+                            <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
+                                value="{{ request('periode') }}" placeholder="Periode">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                            <a href="{{ url('Penilaian') }}" class="btn btn-danger ml-4">Reset</a>
+                        </div>
+                    </div>
+
+                    {{-- <div class="col-12">
+                        <button type="submit" class="btn btn-primary ml-2">Filter</button>
+                        <a href="{{ url('Alternatif') }}" class="btn btn-danger ml-4">Reset</a>
+                    </div> --}}
+                </div>
+            </form>
+
+            {{-- <form action="{{ route('Penilaian') }}" method="GET">
                 <div class="form-group col-md-4">
                     <div style="display: flex; align-items: center;">
                         <select class="form-control" id="divisiFilter" name="divisi">
@@ -21,7 +57,7 @@
                                     {{ $division->divisi }}</option>
                             @endforeach
                         </select>
-                        {{-- <button type="submit" class="btn btn-primary">Filter</button> --}}
+                        <button type="submit" class="btn btn-primary">Filter</button>
                     </div>
                 </div>
                 <div class="form-group col-md-4">
@@ -31,7 +67,7 @@
                         <button type="submit" class="btn btn-primary ml-2">Filter</button>
                     </div>
                 </div>
-            </form>
+            </form> --}}
         </div>
 
         <div class="card-body">

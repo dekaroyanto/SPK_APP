@@ -21,17 +21,22 @@ class AlternatifController extends Controller
 
         $query = AlternatifModel::query()->orderBy('id_alternatif', 'desc');
 
+        $isFiltered = false;
+
         if ($request->has('divisi') && $request->divisi != "") {
             $divisi = $request->divisi;
             $query->where('divisi', $divisi);
+            $isFiltered = true;
         }
 
         if ($request->has('periode') && $request->periode != "") {
             $periode = $request->periode;
             $query->where('periode', $periode);
+            $isFiltered = true;
         }
 
         $data['list'] = $query->get();
+        $data['jumlahDiterima'] = $isFiltered ? ($data['list']->first()->diterima ?? '') : '';
 
         return view('alternatif.index', $data);
     }
@@ -62,7 +67,7 @@ class AlternatifController extends Controller
             $alternatif->save();
         }
 
-        return redirect()->route('Alternatif')->with('success', 'Jumlah Diterima berhasil diupdate!');
+        return back()->with('success', 'Jumlah Diterima berhasil diupdate!');
     }
 
     public function tambah()

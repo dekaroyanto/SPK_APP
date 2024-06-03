@@ -18,15 +18,22 @@ class HasilController extends Controller
 
         $data['page'] = "Hasil";
         $data['hasil'] = PerhitunganModel::get_hasil();
-        $data['divisions'] = AlternatifModel::distinct('divisi')->pluck('divisi'); // Fetch distinct division values
+        $data['divisions'] = AlternatifModel::distinct('divisi')->pluck('divisi');
 
-        // Apply filters if provided in the request
+
+        $isFiltered = false;
+
         if ($request->filled('divisi')) {
             $data['hasil'] = $data['hasil']->where('divisi', $request->divisi);
+            $isFiltered = true;
         }
         if ($request->filled('periode')) {
             $data['hasil'] = $data['hasil']->where('periode', $request->periode);
+            $isFiltered = true;
         }
+
+        $data['jumlahDiterima'] = $isFiltered ? ($data['hasil']->first()->diterima ?? '') : '';
+
 
         return view('hasil.index', $data);
     }
