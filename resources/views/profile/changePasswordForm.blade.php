@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><i class="fa-solid fa-key"></i> Ganti Password</h1>
+        <h1 class="h3 mb-0 text-gray-800"><i class="fa-solid fa-key"></i> Ubah Password</h1>
     </div>
 
     @if (session('message'))

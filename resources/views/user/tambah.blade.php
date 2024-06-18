@@ -22,6 +22,10 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-6">
+                        <label class="font-weight-bold">Nama Lengkap</label>
+                        <input autocomplete="off" type="text" name="nama" required class="form-control" />
+                    </div>
+                    <div class="form-group col-md-6">
                         <label class="font-weight-bold">E-Mail</label>
                         <input autocomplete="off" type="email" name="email" required class="form-control" />
                     </div>
@@ -34,11 +38,6 @@
                     <div class="form-group col-md-6">
                         <label class="font-weight-bold">Password</label>
                         <input autocomplete="off" type="password" name="password" required class="form-control" />
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label class="font-weight-bold">Nama Lengkap</label>
-                        <input autocomplete="off" type="text" name="nama" required class="form-control" />
                     </div>
 
                     <div class="form-group col-md-6" hidden>

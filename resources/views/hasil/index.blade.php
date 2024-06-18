@@ -30,7 +30,7 @@
                     <div class="col-md-4 col-12">
                         <div class="form-group">
                             <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
-                                value="{{ request('periode') }}" placeholder="Periode">
+                                value="{{ \Carbon\Carbon::now()->format('Y-m') }}" placeholder="Periode">
                         </div>
                     </div>
 

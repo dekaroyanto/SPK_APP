@@ -67,6 +67,6 @@ class ProfileController extends Controller
 
         $user->update($data);
 
-        return redirect('Profile/ChangePassword')->with('success', 'Data profile berhasil diupdate!');
+        return redirect('Profile/ChangePassword')->with('success', 'Password berhasil diubah!');
     }
 }
