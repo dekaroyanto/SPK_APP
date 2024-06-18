@@ -3631,6 +3631,7 @@
         },
         {
             "name": "symfony/css-selector",
+<<<<<<< HEAD
             "version": "v7.1.1",
             "source": {
                 "type": "git",
@@ -3641,6 +3642,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/css-selector/zipball/1c7cee86c6f812896af54434f8ce29c8d94f9ff4",
                 "reference": "1c7cee86c6f812896af54434f8ce29c8d94f9ff4",
+=======
+            "version": "v7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/css-selector.git",
+                "reference": "843f2f7ac5e4c5bf0ec77daef23ca6d4d8922adc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/843f2f7ac5e4c5bf0ec77daef23ca6d4d8922adc",
+                "reference": "843f2f7ac5e4c5bf0ec77daef23ca6d4d8922adc",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -3676,7 +3689,11 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/css-selector/tree/v7.1.1"
+=======
+                "source": "https://github.com/symfony/css-selector/tree/v7.1.0"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
             },
             "funding": [
                 {
@@ -3692,7 +3709,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:57:53+00:00"
+=======
+            "time": "2024-04-18T09:32:20+00:00"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3838,6 +3859,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
+<<<<<<< HEAD
             "version": "v7.1.1",
             "source": {
                 "type": "git",
@@ -3848,6 +3870,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9fa7f7a21beb22a39a8f3f28618b29e50d7a55a7",
                 "reference": "9fa7f7a21beb22a39a8f3f28618b29e50d7a55a7",
+=======
+            "version": "v7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "522d2772d6c7bab843b0c52466dc7844622bacc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/522d2772d6c7bab843b0c52466dc7844622bacc2",
+                "reference": "522d2772d6c7bab843b0c52466dc7844622bacc2",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -3898,7 +3932,11 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/event-dispatcher/tree/v7.1.1"
+=======
+                "source": "https://github.com/symfony/event-dispatcher/tree/v7.1.0"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
             },
             "funding": [
                 {
@@ -3914,7 +3952,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:57:53+00:00"
+=======
+            "time": "2024-04-18T09:32:20+00:00"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
         },
         {
             "name": "symfony/event-dispatcher-contracts",
@@ -5352,6 +5394,7 @@
         },
         {
             "name": "symfony/string",
+<<<<<<< HEAD
             "version": "v7.1.1",
             "source": {
                 "type": "git",
@@ -5362,6 +5405,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/60bc311c74e0af215101235aa6f471bcbc032df2",
                 "reference": "60bc311c74e0af215101235aa6f471bcbc032df2",
+=======
+            "version": "v7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "6f41b185e742737917e6f2e3eca37767fba5f17a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/6f41b185e742737917e6f2e3eca37767fba5f17a",
+                "reference": "6f41b185e742737917e6f2e3eca37767fba5f17a",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -5419,7 +5474,11 @@
                 "utf8"
             ],
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/string/tree/v7.1.1"
+=======
+                "source": "https://github.com/symfony/string/tree/v7.1.0"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
             },
             "funding": [
                 {
@@ -5435,7 +5494,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-04T06:40:14+00:00"
+=======
+            "time": "2024-05-17T10:55:18+00:00"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
         },
         {
             "name": "symfony/translation",
@@ -7034,6 +7097,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "10.5.21",
             "source": {
                 "type": "git",
@@ -7044,6 +7108,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ac837816fa52078f7a5e17ed774f256a72a51af6",
                 "reference": "ac837816fa52078f7a5e17ed774f256a72a51af6",
+=======
+            "version": "10.5.20",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "547d314dc24ec1e177720d45c6263fb226cc2ae3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/547d314dc24ec1e177720d45c6263fb226cc2ae3",
+                "reference": "547d314dc24ec1e177720d45c6263fb226cc2ae3",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -7115,7 +7191,11 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.21"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.20"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
             },
             "funding": [
                 {
@@ -7131,7 +7211,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-15T09:13:15+00:00"
+=======
+            "time": "2024-04-24T06:32:35+00:00"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
         },
         {
             "name": "sebastian/cli-parser",
@@ -8113,6 +8197,7 @@
             "time": "2024-04-24T13:22:11+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "spatie/error-solutions",
             "version": "1.0.0",
             "source": {
@@ -8198,6 +8283,19 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/097040ff51e660e0f6fc863684ac4b02c93fa234",
                 "reference": "097040ff51e660e0f6fc863684ac4b02c93fa234",
+=======
+            "name": "spatie/flare-client-php",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/flare-client-php.git",
+                "reference": "220a7c8745e9fa427d54099f47147c4b97fe6462"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/flare-client-php/zipball/220a7c8745e9fa427d54099f47147c4b97fe6462",
+                "reference": "220a7c8745e9fa427d54099f47147c4b97fe6462",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -8245,7 +8343,11 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/flare-client-php/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/spatie/flare-client-php/tree/1.7.0"
+=======
+                "source": "https://github.com/spatie/flare-client-php/tree/1.6.0"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
             },
             "funding": [
                 {
@@ -8253,6 +8355,7 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-12T14:39:14+00:00"
         },
         {
@@ -8267,6 +8370,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/ignition/zipball/e3a68e137371e1eb9edc7f78ffa733f3b98991d2",
                 "reference": "e3a68e137371e1eb9edc7f78ffa733f3b98991d2",
+=======
+            "time": "2024-05-22T09:45:39+00:00"
+        },
+        {
+            "name": "spatie/ignition",
+            "version": "1.14.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/ignition.git",
+                "reference": "5e11c11f675bb5251f061491a493e04a1a571532"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/5e11c11f675bb5251f061491a493e04a1a571532",
+                "reference": "5e11c11f675bb5251f061491a493e04a1a571532",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -8336,6 +8455,7 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-12T14:55:22+00:00"
         },
         {
@@ -8350,6 +8470,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/3c067b75bfb50574db8f7e2c3978c65eed71126c",
                 "reference": "3c067b75bfb50574db8f7e2c3978c65eed71126c",
+=======
+            "time": "2024-05-29T08:10:20+00:00"
+        },
+        {
+            "name": "spatie/laravel-ignition",
+            "version": "2.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-ignition.git",
+                "reference": "f52124d50122611e8a40f628cef5c19ff6cc5b57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/f52124d50122611e8a40f628cef5c19ff6cc5b57",
+                "reference": "f52124d50122611e8a40f628cef5c19ff6cc5b57",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -8358,7 +8494,12 @@
                 "ext-mbstring": "*",
                 "illuminate/support": "^10.0|^11.0",
                 "php": "^8.1",
+<<<<<<< HEAD
                 "spatie/ignition": "^1.15",
+=======
+                "spatie/flare-client-php": "^1.5",
+                "spatie/ignition": "^1.14",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "symfony/console": "^6.2.3|^7.0",
                 "symfony/var-dumper": "^6.2.3|^7.0"
             },
@@ -8427,6 +8568,7 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-06-12T15:01:18+00:00"
         },
         {
@@ -8441,6 +8583,22 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/fa34c77015aa6720469db7003567b9f772492bf2",
                 "reference": "fa34c77015aa6720469db7003567b9f772492bf2",
+=======
+            "time": "2024-05-02T13:42:49+00:00"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "v7.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "c5f718c94e3c37dd77b77484e6cf0b524b2d405e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/c5f718c94e3c37dd77b77484e6cf0b524b2d405e",
+                "reference": "c5f718c94e3c37dd77b77484e6cf0b524b2d405e",
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
                 "shasum": ""
             },
             "require": {
@@ -8482,7 +8640,11 @@
             "description": "Loads and dumps YAML files",
             "homepage": "https://symfony.com",
             "support": {
+<<<<<<< HEAD
                 "source": "https://github.com/symfony/yaml/tree/v7.1.1"
+=======
+                "source": "https://github.com/symfony/yaml/tree/v7.1.0"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
             },
             "funding": [
                 {
@@ -8498,7 +8660,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-05-31T14:57:53+00:00"
+=======
+            "time": "2024-04-28T18:29:00+00:00"
+>>>>>>> bb00fd651fb20ff58c90e0dff27421f0b8819b1d
         },
         {
             "name": "theseer/tokenizer",
