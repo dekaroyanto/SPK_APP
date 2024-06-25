@@ -61,10 +61,14 @@
                     </div>
                 </div>
 
+                <?php
+                // Mendapatkan nilai periode dari permintaan (GET atau POST) atau dari input sebelumnya
+                $periode = isset($_REQUEST['periode']) ? $_REQUEST['periode'] : \Carbon\Carbon::now()->format('Y-m');
+                ?>
                 <div class="col-md-4 col-12">
                     <div class="form-group">
                         <input type="month" class="form-control ml-2" id="tanggalFilter" name="periode"
-                            value="{{ \Carbon\Carbon::now()->format('Y-m') }}" placeholder="Periode">
+                            value="{{ $periode }}" placeholder="Periode">
                     </div>
                 </div>
 
